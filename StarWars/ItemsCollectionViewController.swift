@@ -14,12 +14,19 @@ private let reuseIdentifier = "ItemCell"
 
 class ItemsCollectionViewController: UICollectionViewController {
     var entity: Entity?
+    var items: [Item]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.title = entity?.name
-        
+        if let entity = entity{
+            self.title = entity.name
+            
+            DataRepo.getAllItems(type: entity.type){ items in
+                self.items = items
+                self.collectionView?.reloadData()
+            }
+
+        }
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -48,20 +55,28 @@ class ItemsCollectionViewController: UICollectionViewController {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
+        if let items = items{
+            return items.count
+        }
+        
         return 0
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ItemCollectionViewCell
     
         // Configure the cell
-    
+        if let item = items?[indexPath.row]{
+            cell.name.text = item.name
+        }
+        
+        
         return cell
     }
 

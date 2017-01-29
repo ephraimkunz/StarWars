@@ -9,13 +9,16 @@
 import UIKit
 
 private let reuseIdentifier = "EntityCell"
+private let titleText = "Star Wars Scoop"
 
-private let entities = [Entity(EntityType.planets), Entity(EntityType.people), Entity(EntityType.films), Entity(EntityType.species), Entity(EntityType.vehicles)]
+private let entities = [Entity(EntityType.planets), Entity(EntityType.people), Entity(EntityType.films), Entity(EntityType.species), Entity(EntityType.starships), Entity(EntityType.vehicles)]
 
 class EntityCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = titleText
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
