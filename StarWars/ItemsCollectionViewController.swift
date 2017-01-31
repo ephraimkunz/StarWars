@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import SDWebImage
 
 private let storyboardId = "ItemsCVC"
 private let reuseIdentifier = "ItemCell"
+private let placeholderId = "GenericImagePlaceholder"
 
 
 class ItemsCollectionViewController: UICollectionViewController {
@@ -73,6 +75,25 @@ class ItemsCollectionViewController: UICollectionViewController {
         // Configure the cell
         if let item = items?[indexPath.row]{
             cell.name.text = item.getName()
+            
+            if let imageUrl = item.getImageLink(){
+                var components = URLComponents(string: imageUrl)
+                components?.scheme = "https"
+                let url = try! components?.asURL()
+                cell.image.sd_setImage(with: url, placeholderImage: UIImage(named: placeholderId))
+            }
+            else{
+                cell.image.image = UIImage(named: placeholderId) //Put a placeholder there for now
+                DataRepo.getImageUrl(name: item.getName()){ imageUrl in
+                    let item = self.items?[indexPath.row]
+                    
+                    if let imageUrl = imageUrl, var item = item{
+                        item.setImageLink(link: imageUrl)
+                        self.items?[indexPath.row] = item
+                        collectionView.reloadItems(at: [indexPath])
+                    }
+                }
+            }
         }
         
         

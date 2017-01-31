@@ -28,4 +28,8 @@ struct Starship: Displayable{
     func getImageLink() -> String? {
         return mainImageLink
     }
+    
+    mutating func setImageLink(link: String){
+        mainImageLink = link
+    }
 }

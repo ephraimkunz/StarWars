@@ -29,4 +29,8 @@ struct TopLevelItem: Displayable{
     func getId() -> String {
         return id
     }
+    
+    mutating func setImageLink(link: String){
+        //Don't think this will ever be called
+    }
 }

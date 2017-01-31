@@ -12,7 +12,7 @@
         <scene sceneID="Kx4-fd-bU1">
             <objects>
                 <collectionViewController id="hJS-9j-rxG" customClass="TopLevelCollectionViewController" customModule="StarWars" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="6Y4-ra-yXr">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="6Y4-ra-yXr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -23,7 +23,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EntityCell" id="IaM-Wu-Eby" customClass="EntityCollectionViewCell" customModule="StarWars" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TopLevelCell" id="IaM-Wu-Eby" customClass="TopLevelCollectionViewCell" customModule="StarWars" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -39,15 +39,23 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GnR-hJ-Geg">
+                                            <rect key="frame" x="1" y="2" width="138" height="104"/>
+                                        </imageView>
                                     </subviews>
                                 </view>
                                 <constraints>
+                                    <constraint firstItem="GnR-hJ-Geg" firstAttribute="top" secondItem="IaM-Wu-Eby" secondAttribute="top" constant="2" id="92y-aL-l1Z"/>
+                                    <constraint firstItem="GnR-hJ-Geg" firstAttribute="leading" secondItem="IaM-Wu-Eby" secondAttribute="leading" constant="1" id="Idw-fL-a3S"/>
                                     <constraint firstItem="x5d-YM-1hu" firstAttribute="leading" secondItem="IaM-Wu-Eby" secondAttribute="leading" constant="4" id="QeG-SE-ZEf"/>
                                     <constraint firstAttribute="bottom" secondItem="x5d-YM-1hu" secondAttribute="bottom" constant="5" id="Sly-Sk-NbL"/>
+                                    <constraint firstAttribute="trailing" secondItem="GnR-hJ-Geg" secondAttribute="trailing" constant="1" id="fj0-Wp-Y6q"/>
                                     <constraint firstAttribute="trailing" secondItem="x5d-YM-1hu" secondAttribute="trailing" constant="4" id="hSx-MA-2dX"/>
+                                    <constraint firstItem="x5d-YM-1hu" firstAttribute="top" secondItem="GnR-hJ-Geg" secondAttribute="bottom" constant="8" symbolic="YES" id="hfI-vE-s2b"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="cellLabel" destination="x5d-YM-1hu" id="Um4-w3-6za"/>
+                                    <outlet property="image" destination="GnR-hJ-Geg" id="7nm-Oy-ZkS"/>
+                                    <outlet property="name" destination="x5d-YM-1hu" id="J3u-sc-nby"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -93,7 +101,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="owp-8y-kk1">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="owp-8y-kk1">
                                             <rect key="frame" x="2" y="2" width="136" height="101"/>
                                         </imageView>
                                     </subviews>

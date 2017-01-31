@@ -12,4 +12,5 @@ protocol Displayable {
     func getName() -> String
     func getImageLink() -> String?
     func getId() -> String
+    mutating func setImageLink(link: String)
 }

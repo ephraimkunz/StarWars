@@ -8,8 +8,9 @@
 
 import UIKit
 
-private let reuseIdentifier = "EntityCell"
+private let reuseIdentifier = "TopLevelCell"
 private let titleText = "Star Wars Scoop"
+private let placeholderId = "GenericImagePlaceholder"
 
 class TopLevelCollectionViewController: UICollectionViewController {
     let entities = DataRepo.getAllCollectionItems()
@@ -54,13 +55,13 @@ class TopLevelCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! EntityCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! TopLevelCollectionViewCell
         
         let entity = getEntity(forIndexPath: indexPath)
     
         // Configure the cell
-        cell.cellLabel.text = entity.getName()
-    
+        cell.name.text = entity.getName()
+        cell.image.image = UIImage(named: placeholderId)
         return cell
     }
     

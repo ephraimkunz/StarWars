@@ -14,7 +14,7 @@ struct Vehicle: Displayable {
     
     init(json: [String: Any]) {
         self.name = json["name"] as! String
-        self.id = json["url"] as! String
+        self.id = DataUtilities.idFromUrl(url: json["url"] as! String)
     }
     
     func getName() -> String {
@@ -27,5 +27,9 @@ struct Vehicle: Displayable {
     
     func getImageLink() -> String? {
         return mainImageLink
+    }
+    
+    mutating func setImageLink(link: String){
+        mainImageLink = link
     }
 }
