@@ -12,7 +12,7 @@ import Alamofire
 private let SwapiBaseUrl = "https://swapi.co/api/"
 
 class DataRepo {
-    static func getAllItems(type: EntityType, callback: @escaping ([Item]) -> Void){
+    static func getAllItems(type: EntityType, callback: @escaping ([Displayable]) -> Void){
         let requestUrl = getRequestUrl(type: type, id: nil)
         
         Alamofire.request(requestUrl).responseJSON{ response in
@@ -21,15 +21,29 @@ class DataRepo {
                 print(json)
                 
                 //Begin the somewhat nasty Swift JSON parsing. When will they make this easier?
-                var items: [Item] = []
+                var items: [Displayable] = []
                 if let dict = json as? [String: Any]{
                     if let array = dict["results"] as? [Any]{
                         for item in array{
                             if let item = item as? [String: Any]{
-                                if let newItemObj = Item(json: item){
-                                    items.append(newItemObj)
-    
+                                
+                                //Seems like there should be a better way to do this
+                                var obj: Displayable
+                                switch(type){
+                                case .films:
+                                    obj = Film(json: item)
+                                case .people:
+                                    obj = Person(json: item)
+                                case .planets:
+                                    obj = Planet(json: item)
+                                case .species:
+                                    obj = Species(json: item)
+                                case .starships:
+                                    obj = Starship(json: item)
+                                case.vehicles:
+                                    obj = Vehicle(json: item)
                                 }
+                                items.append(obj)
                             }
                         }
                     }
@@ -42,6 +56,12 @@ class DataRepo {
                 break
             }
         }
+    }
+    
+    static func getAllCollectionItems() -> [Displayable]{
+        let menuItems = [TopLevelItem(EntityType.planets), TopLevelItem(EntityType.people), TopLevelItem(EntityType.films), TopLevelItem(EntityType.species), TopLevelItem(EntityType.starships), TopLevelItem(EntityType.vehicles)]
+        
+        return menuItems
     }
     
     private static func getRequestUrl(type: EntityType, id: Int?) -> String {

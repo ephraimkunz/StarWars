@@ -33,17 +33,3 @@ enum EntityType{
         }
     }
 }
-
-struct Entity{
-    var type: EntityType
-    
-    var name: String {
-        get{
-            return type.getName()
-        }
-    }
-    
-    init(_ type: EntityType) {
-        self.type = type
-    }
-}

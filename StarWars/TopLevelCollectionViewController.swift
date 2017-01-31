@@ -11,9 +11,8 @@ import UIKit
 private let reuseIdentifier = "EntityCell"
 private let titleText = "Star Wars Scoop"
 
-private let entities = [Entity(EntityType.planets), Entity(EntityType.people), Entity(EntityType.films), Entity(EntityType.species), Entity(EntityType.starships), Entity(EntityType.vehicles)]
-
-class EntityCollectionViewController: UICollectionViewController {
+class TopLevelCollectionViewController: UICollectionViewController {
+    let entities = DataRepo.getAllCollectionItems()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +59,7 @@ class EntityCollectionViewController: UICollectionViewController {
         let entity = getEntity(forIndexPath: indexPath)
     
         // Configure the cell
-        cell.cellLabel.text = entity.name
+        cell.cellLabel.text = entity.getName()
     
         return cell
     }
@@ -70,7 +69,7 @@ class EntityCollectionViewController: UICollectionViewController {
         
         let itemsVC = self.storyboard?.instantiateViewController(withIdentifier: ItemsCollectionViewController.storyboardIdentifier()) as! ItemsCollectionViewController
         
-        itemsVC.entity = entity
+        itemsVC.entity = entity as? TopLevelItem //Cast here to be able to access entityType information later
         
         navigationController?.pushViewController(itemsVC, animated: true)
     }
@@ -106,7 +105,7 @@ class EntityCollectionViewController: UICollectionViewController {
     }
     */
     
-    func getEntity(forIndexPath indexPath: IndexPath) -> Entity{
+    func getEntity(forIndexPath indexPath: IndexPath) -> Displayable{
         return entities[indexPath.row]
     }
 

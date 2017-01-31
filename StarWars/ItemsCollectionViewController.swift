@@ -13,19 +13,18 @@ private let reuseIdentifier = "ItemCell"
 
 
 class ItemsCollectionViewController: UICollectionViewController {
-    var entity: Entity?
-    var items: [Item]?
+    var entity: TopLevelItem?
+    var items: [Displayable]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         if let entity = entity{
-            self.title = entity.name
+            self.title = entity.getName()
             
             DataRepo.getAllItems(type: entity.type){ items in
                 self.items = items
                 self.collectionView?.reloadData()
             }
-
         }
         
         // Uncomment the following line to preserve selection between presentations
@@ -73,7 +72,7 @@ class ItemsCollectionViewController: UICollectionViewController {
     
         // Configure the cell
         if let item = items?[indexPath.row]{
-            cell.name.text = item.name
+            cell.name.text = item.getName()
         }
         
         
