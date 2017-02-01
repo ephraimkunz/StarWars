@@ -115,7 +115,9 @@ class DataRepo {
     
     private static func getUrlForImageUrl(name: String) -> String{
         var url = WookieBaseUrl
-        url += "action=imageserving&wisTitle=\(DataUtilities.spacesToUnderscores(string: name))&format=json"
+        let withUnderscores = DataUtilities.spacesToUnderscores(string: name)
+        let withoutDiacritics = withUnderscores.folding(options: .diacriticInsensitive, locale: Locale.current)
+        url += "action=imageserving&wisTitle=\(withoutDiacritics)&format=json"
         return url
     }
     

@@ -12,14 +12,17 @@ import SDWebImage
 private let storyboardId = "ItemsCVC"
 private let reuseIdentifier = "ItemCell"
 private let placeholderId = "GenericImagePlaceholder"
+private let imageDimension = 300 //Image dimension to scale the massive images from the server to
 
 
-class ItemsCollectionViewController: UICollectionViewController {
+class ItemsCollectionViewController: UICollectionViewController, SDWebImageManagerDelegate{
     var entity: TopLevelItem?
     var items: [Displayable]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        SDWebImageManager.shared().delegate = self
+
         if let entity = entity{
             self.title = entity.getName()
             
@@ -133,6 +136,11 @@ class ItemsCollectionViewController: UICollectionViewController {
     
     static func storyboardIdentifier() -> String{
         return storyboardId
+    }
+    
+    func imageManager(_ imageManager: SDWebImageManager!, transformDownloadedImage image: UIImage!, with imageURL: URL!) -> UIImage! {
+        let image = DataUtilities.resizeImage(image: image, targetSize: CGSize(width: imageDimension, height: imageDimension))
+        return image
     }
 
 }
