@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import GPUImage
 
 struct DataUtilities{
     static func idFromUrl(url: String) -> String{
@@ -32,16 +33,22 @@ struct DataUtilities{
         } else {
             newSize = CGSize(width: size.width * widthRatio,  height: size.height * widthRatio)
         }
+//
+//        // This is the rect that we've calculated out and this is what is actually used below
+//        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+//        
+//        // Actually do the resizing to the rect using the ImageContext stuff
+//        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+//        image.draw(in: rect)
+//        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+//        UIGraphicsEndImageContext()
+//        
+//        return newImage
         
-        // This is the rect that we've calculated out and this is what is actually used below
-        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
-        
-        // Actually do the resizing to the rect using the ImageContext stuff
-        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
-        image.draw(in: rect)
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        
+        //Test for speedups with GPUImage
+        let resizeFilter = GPUImageTransformFilter()
+        resizeFilter.forceProcessing(atSizeRespectingAspectRatio:newSize)
+        let newImage = resizeFilter.image(byFilteringImage: image)!
         return newImage
     }
 }
