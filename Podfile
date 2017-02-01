@@ -8,5 +8,5 @@ target 'StarWars' do
   # Pods for StarWars
 pod 'Alamofire'
 pod 'SDWebImage'
-pod 'GPUImage'
+
 end

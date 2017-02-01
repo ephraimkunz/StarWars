@@ -26,7 +26,7 @@ class ItemsCollectionViewController: UICollectionViewController, SDWebImageManag
         if let entity = entity{
             self.title = entity.getName()
             
-            DataRepo.getAllItems(type: entity.type){ items in
+            DataRepo.getAllSwapiItems(type: entity.type){ items in
                 self.items = items
                 self.collectionView?.reloadData()
             }

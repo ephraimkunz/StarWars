@@ -11,10 +11,10 @@ import Alamofire
 
 private let SwapiBaseUrl = "https://swapi.co/api/"
 private let WookieBaseUrl = "https://starwars.wikia.com/api.php?"
-private let ITEMS_PER_PAGE = 10 //SWAPI gives us 10 items at a time
+private let SWAPI_ITEMS_PER_PAGE = 10 //SWAPI gives us maximum 10 items at a time
 
 class DataRepo {
-    static func getAllItems(type: EntityType, callback: @escaping ([Displayable]) -> Void){
+    static func getAllSwapiItems(type: EntityType, callback: @escaping ([Displayable]) -> Void){
         let requestUrl = getRequestUrl(type: type, id: nil)
         
         Alamofire.request(requestUrl).responseJSON{ response in
@@ -30,7 +30,7 @@ class DataRepo {
                 
                 if let dict = json as? [String: Any]{
                     let count = dict["count"] as! Int
-                    let pagesToFetch = count / ITEMS_PER_PAGE
+                    let pagesToFetch = count / SWAPI_ITEMS_PER_PAGE
                     
                     //Go get the other pages if any
                     if(pagesToFetch > 0){ // Don't fetch any pages if there are none to fetch
@@ -45,7 +45,7 @@ class DataRepo {
                                     
                                     if let dict = json as? [String: Any]{
                                         if let array = dict["results"] as? [Any]{
-                                            items.append(contentsOf: getMultipleItemsFromJSON(array: array, type: type))
+                                            items.append(contentsOf: unpackJSONArray(array: array, type: type))
                                         }
                                     }
                                 case .failure(let error):
@@ -59,7 +59,7 @@ class DataRepo {
     
                     
                     if let array = dict["results"] as? [Any]{
-                        items.append(contentsOf: getMultipleItemsFromJSON(array: array, type: type))
+                        items.append(contentsOf: unpackJSONArray(array: array, type: type))
                     }
                 }
                 
@@ -73,7 +73,7 @@ class DataRepo {
         }
     }
     
-    static func getAllCollectionItems() -> [Displayable]{
+    static func getAllTopLevelItems() -> [Displayable]{
         let menuItems = [
             TopLevelItem(EntityType.planets),
             TopLevelItem(EntityType.people),
@@ -85,7 +85,7 @@ class DataRepo {
         return menuItems
     }
     
-    static func getMultipleItemsFromJSON(array: [Any], type: EntityType) -> [Displayable]{
+    static func unpackJSONArray(array: [Any], type: EntityType) -> [Displayable]{
         var items: [Displayable] = []
         
         for item in array{
