@@ -76,7 +76,7 @@ class DataRepo {
     }
     
     //Get menu items for first collectionView
-    static func getAllTopLevelItems() -> [Displayable]{
+    static func getAllTopLevelItems() -> [TopLevelItem]{
         let menuItems = [
             TopLevelItem(EntityType.planets),
             TopLevelItem(EntityType.people),

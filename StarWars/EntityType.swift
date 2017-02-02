@@ -32,4 +32,21 @@ enum EntityType{
             return "Vehicles"
         }
     }
+    
+    func getImageName() -> String{
+        switch self {
+        case .planets:
+            return "PlanetMenuItem"
+        case .films:
+            return "FilmMenuItem"
+        case .species:
+            return "SpeciesMenuItem"
+        case .starships:
+            return "StarshipMenuItem"
+        case .people:
+            return "PersonMenuItem"
+        case .vehicles:
+            return "VehicleMenuItem"
+        }
+    }
 }

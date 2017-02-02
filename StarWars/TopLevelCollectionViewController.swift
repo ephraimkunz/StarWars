@@ -9,7 +9,6 @@
 import UIKit
 
 private let reuseIdentifier = "TopLevelCell"
-private let placeholderId = "GenericImagePlaceholder"
 
 class TopLevelCollectionViewController: UICollectionViewController {
     let entities = DataRepo.getAllTopLevelItems()
@@ -57,7 +56,7 @@ class TopLevelCollectionViewController: UICollectionViewController {
     
         // Configure the cell
         cell.name.text = entity.getName()
-        cell.image.image = UIImage(named: placeholderId)
+        cell.image.image = UIImage(named: entity.type.getImageName())
         return cell
     }
     
@@ -66,7 +65,7 @@ class TopLevelCollectionViewController: UICollectionViewController {
         
         let itemsVC = self.storyboard?.instantiateViewController(withIdentifier: ItemsCollectionViewController.storyboardIdentifier()) as! ItemsCollectionViewController
         
-        itemsVC.entity = entity as? TopLevelItem //Cast here to be able to access entityType information later
+        itemsVC.entity = entity
         
         navigationController?.pushViewController(itemsVC, animated: true)
     }
@@ -82,7 +81,7 @@ class TopLevelCollectionViewController: UICollectionViewController {
         cell?.backgroundColor = UIColor.white
     }
     
-    func getEntity(forIndexPath indexPath: IndexPath) -> Displayable{
+    func getEntity(forIndexPath indexPath: IndexPath) -> TopLevelItem{
         return entities[indexPath.row]
     }
 
