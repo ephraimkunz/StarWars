@@ -9,7 +9,6 @@
 import UIKit
 
 private let reuseIdentifier = "TopLevelCell"
-private let titleText = "Star Wars Scoop"
 private let placeholderId = "GenericImagePlaceholder"
 
 class TopLevelCollectionViewController: UICollectionViewController {
@@ -17,9 +16,6 @@ class TopLevelCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.title = titleText
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -76,35 +72,15 @@ class TopLevelCollectionViewController: UICollectionViewController {
     }
 
     // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
+    override func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath){
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.backgroundColor = UIColor.blue
     }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
+    override func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.backgroundColor = UIColor.white
     }
-    */
     
     func getEntity(forIndexPath indexPath: IndexPath) -> Displayable{
         return entities[indexPath.row]

@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Top Level Collection View Controller-->
+        <!--Star Wars Scoop-->
         <scene sceneID="Kx4-fd-bU1">
             <objects>
                 <collectionViewController id="hJS-9j-rxG" customClass="TopLevelCollectionViewController" customModule="StarWars" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,22 +16,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="T0R-HR-D8O">
-                            <size key="itemSize" width="140" height="140"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="5" id="T0R-HR-D8O">
+                            <size key="itemSize" width="150" height="160"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TopLevelCell" id="IaM-Wu-Eby" customClass="TopLevelCollectionViewCell" customModule="StarWars" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
+                                <rect key="frame" x="0.0" y="0.0" width="150" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="150" height="160"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x5d-YM-1hu">
-                                            <rect key="frame" x="4" y="114" width="132" height="21"/>
+                                            <rect key="frame" x="4" y="134" width="142" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="zN5-1h-HAh"/>
                                             </constraints>
@@ -39,8 +39,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GnR-hJ-Geg">
-                                            <rect key="frame" x="1" y="2" width="138" height="104"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GnR-hJ-Geg">
+                                            <rect key="frame" x="1" y="2" width="148" height="124"/>
                                         </imageView>
                                     </subviews>
                                 </view>
@@ -64,7 +64,9 @@
                             <outlet property="delegate" destination="hJS-9j-rxG" id="kNb-Pm-Oh6"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="RGp-Ui-HSN"/>
+                    <navigationItem key="navigationItem" title="Star Wars Scoop" id="RGp-Ui-HSN">
+                        <barButtonItem key="backBarButtonItem" title="All" id="X6f-EN-Cvr"/>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xIr-pk-X9c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -78,22 +80,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zIe-Kn-nFg">
-                            <size key="itemSize" width="140" height="140"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="5" id="zIe-Kn-nFg">
+                            <size key="itemSize" width="150" height="160"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCell" id="S3y-x3-qME" customClass="ItemCollectionViewCell" customModule="StarWars">
-                                <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
+                                <rect key="frame" x="0.0" y="0.0" width="150" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="150" height="160"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vuc-uo-a2R">
-                                            <rect key="frame" x="4" y="111" width="132" height="21"/>
+                                            <rect key="frame" x="4" y="131" width="142" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="o9o-kz-rXA"/>
                                             </constraints>
@@ -102,14 +104,14 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="owp-8y-kk1">
-                                            <rect key="frame" x="2" y="2" width="136" height="101"/>
+                                            <rect key="frame" x="3" y="3" width="144" height="120"/>
                                         </imageView>
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="owp-8y-kk1" firstAttribute="leading" secondItem="S3y-x3-qME" secondAttribute="leading" constant="2" id="22Q-Qo-xAT"/>
-                                    <constraint firstItem="owp-8y-kk1" firstAttribute="top" secondItem="S3y-x3-qME" secondAttribute="top" constant="2" id="9MH-ix-E73"/>
-                                    <constraint firstAttribute="trailing" secondItem="owp-8y-kk1" secondAttribute="trailing" constant="2" id="C14-j4-O6j"/>
+                                    <constraint firstItem="owp-8y-kk1" firstAttribute="leading" secondItem="S3y-x3-qME" secondAttribute="leading" constant="3" id="22Q-Qo-xAT"/>
+                                    <constraint firstItem="owp-8y-kk1" firstAttribute="top" secondItem="S3y-x3-qME" secondAttribute="top" constant="3" id="9MH-ix-E73"/>
+                                    <constraint firstAttribute="trailing" secondItem="owp-8y-kk1" secondAttribute="trailing" constant="3" id="C14-j4-O6j"/>
                                     <constraint firstItem="vuc-uo-a2R" firstAttribute="leading" secondItem="S3y-x3-qME" secondAttribute="leading" constant="4" id="IsG-cw-9Jq"/>
                                     <constraint firstItem="vuc-uo-a2R" firstAttribute="top" secondItem="owp-8y-kk1" secondAttribute="bottom" constant="8" symbolic="YES" id="Yuu-dj-esk"/>
                                     <constraint firstAttribute="bottom" secondItem="vuc-uo-a2R" secondAttribute="bottom" constant="8" id="ecy-Dt-l6N"/>
