@@ -15,13 +15,12 @@ private let placeholderId = "GenericImagePlaceholder"
 private let imageDimension = 300 //Image dimension to scale the massive images from the server to
 
 
-class ItemsCollectionViewController: UICollectionViewController, SDWebImageManagerDelegate{
+class ItemsCollectionViewController: UICollectionViewController{
     var entity: TopLevelItem?
     var items: [Displayable]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        SDWebImageManager.shared().delegate = self
 
         if let entity = entity{
             self.title = entity.getName()
@@ -64,7 +63,6 @@ class ItemsCollectionViewController: UICollectionViewController, SDWebImageManag
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         if let items = items{
             return items.count
         }
@@ -79,10 +77,10 @@ class ItemsCollectionViewController: UICollectionViewController, SDWebImageManag
         if let item = items?[indexPath.row]{
             cell.name.text = item.getName()
             
-            if let imageUrl = item.getImageLink(){
+            if let imageUrl = item.getImageLink(){ //We already have an image link
                 cell.image.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: placeholderId))
             }
-            else{
+            else{ //Time to go get the image link
                 cell.image.image = UIImage(named: placeholderId) //Put a placeholder there for now
                 DataRepo.getImageUrl(name: item.getName()){ imageUrl in
                     let item = self.items?[indexPath.row]
@@ -90,7 +88,7 @@ class ItemsCollectionViewController: UICollectionViewController, SDWebImageManag
                     if let imageUrl = imageUrl, var item = item{
                         item.setImageLink(link: imageUrl)
                         self.items?[indexPath.row] = item
-                        collectionView.reloadItems(at: [indexPath])
+                        collectionView.reloadItems(at: [indexPath]) //Only reload the one we just changed
                     }
                 }
             }
@@ -134,10 +132,4 @@ class ItemsCollectionViewController: UICollectionViewController, SDWebImageManag
     static func storyboardIdentifier() -> String{
         return storyboardId
     }
-    
-    func imageManager(_ imageManager: SDWebImageManager!, transformDownloadedImage image: UIImage!, with imageURL: URL!) -> UIImage! {
-        let image = DataUtilities.resizeImage(image: image, targetSize: CGSize(width: imageDimension, height: imageDimension))
-        return image
-    }
-
 }

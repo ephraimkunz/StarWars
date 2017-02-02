@@ -15,6 +15,7 @@ private let SWAPI_ITEMS_PER_PAGE = 10 //SWAPI gives us maximum 10 items at a tim
 private let thumbWidth = 300 //Width in pixels of a thumbnail image
 
 class DataRepo {
+    //Get all swapi items of type, walking through the paginated results and sorting the returned array
     static func getAllSwapiItems(type: EntityType, callback: @escaping ([Displayable]) -> Void){
         let requestUrl = getRequestUrl(type: type, id: nil)
         
@@ -74,6 +75,7 @@ class DataRepo {
         }
     }
     
+    //Get menu items for first collectionView
     static func getAllTopLevelItems() -> [Displayable]{
         let menuItems = [
             TopLevelItem(EntityType.planets),
@@ -86,6 +88,7 @@ class DataRepo {
         return menuItems
     }
     
+    //Instantiate and return a set of structs corresponding to a json array
     static func unpackJSONArray(array: [Any], type: EntityType) -> [Displayable]{
         var items: [Displayable] = []
         
@@ -114,6 +117,7 @@ class DataRepo {
         return items
     }
     
+    //Get the basic url for an image (no thumbnail)
     private static func getUrlForImageUrl(name: String) -> String{
         var url = WookieBaseUrl
         let urlEncoded = name.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
@@ -121,6 +125,7 @@ class DataRepo {
         return url
     }
     
+    //Gets the thumbnail image url for a given item name
     static func getImageUrl(name: String, callback: @escaping (URL?) -> Void){
 
         let url = getUrlForImageUrl(name: name)
@@ -146,6 +151,7 @@ class DataRepo {
         }
     }
     
+    //Gets the base swapi url for a given EntityType
     private static func getRequestUrl(type: EntityType, id: Int?) -> String {
         var url = SwapiBaseUrl
         

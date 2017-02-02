@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 
 struct DataUtilities{
+    
+    // Get the swapi id of an item from it's url
     static func idFromUrl(url: String) -> String{
         let array = url.components(separatedBy: "/")
         return array[array.count - 2] //Second to last item
