@@ -22,7 +22,7 @@ struct TopLevelItem: Displayable{
         return type.getName()
     }
     
-    func getImageLink() -> String? {
+    func getImageLink() -> URL? {
         return nil
     }
     
@@ -30,7 +30,11 @@ struct TopLevelItem: Displayable{
         return id
     }
     
-    mutating func setImageLink(link: String){
+    mutating func setImageLink(link: URL){
+        //Don't think this will ever be called
+    }
+    
+    mutating func setAlternateId(id: String){
         //Don't think this will ever be called
     }
 }

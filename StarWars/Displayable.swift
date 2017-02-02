@@ -10,7 +10,8 @@ import Foundation
 
 protocol Displayable {
     func getName() -> String
-    func getImageLink() -> String?
+    func getImageLink() -> URL?
     func getId() -> String
-    mutating func setImageLink(link: String)
+    mutating func setImageLink(link: URL)
+    mutating func setAlternateId(id: String)
 }

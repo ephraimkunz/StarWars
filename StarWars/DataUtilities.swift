@@ -15,10 +15,6 @@ struct DataUtilities{
         return array[array.count - 2] //Second to last item
     }
     
-    static func spacesToUnderscores(string: String) -> String{
-        return string.replacingOccurrences(of: " ", with: "_")
-    }
-    
     static func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
         let size = image.size
         

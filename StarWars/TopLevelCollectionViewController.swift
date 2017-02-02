@@ -13,7 +13,7 @@ private let titleText = "Star Wars Scoop"
 private let placeholderId = "GenericImagePlaceholder"
 
 class TopLevelCollectionViewController: UICollectionViewController {
-    let entities = DataRepo.getAllCollectionItems()
+    let entities = DataRepo.getAllTopLevelItems()
 
     override func viewDidLoad() {
         super.viewDidLoad()

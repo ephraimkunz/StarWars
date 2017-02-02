@@ -10,7 +10,8 @@ import Foundation
 struct Vehicle: Displayable {
     var name: String
     var id: String
-    var mainImageLink: String?
+    var alternateId: String?
+    var mainImageLink: URL?
     
     init(json: [String: Any]) {
         self.name = json["name"] as! String
@@ -25,11 +26,16 @@ struct Vehicle: Displayable {
         return id
     }
     
-    func getImageLink() -> String? {
+    func getImageLink() -> URL? {
         return mainImageLink
     }
     
-    mutating func setImageLink(link: String){
+    mutating func setImageLink(link: URL){
         mainImageLink = link
     }
+    
+    mutating func setAlternateId(id: String){
+        alternateId = id
+    }
+
 }

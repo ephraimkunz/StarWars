@@ -12,6 +12,7 @@ import Alamofire
 private let SwapiBaseUrl = "https://swapi.co/api/"
 private let WookieBaseUrl = "https://starwars.wikia.com/api.php?"
 private let SWAPI_ITEMS_PER_PAGE = 10 //SWAPI gives us maximum 10 items at a time
+private let thumbWidth = 300 //Width in pixels of a thumbnail image
 
 class DataRepo {
     static func getAllSwapiItems(type: EntityType, callback: @escaping ([Displayable]) -> Void){
@@ -115,30 +116,33 @@ class DataRepo {
     
     private static func getUrlForImageUrl(name: String) -> String{
         var url = WookieBaseUrl
-        let withUnderscores = DataUtilities.spacesToUnderscores(string: name)
-        let withoutDiacritics = withUnderscores.folding(options: .diacriticInsensitive, locale: Locale.current)
-        url += "action=imageserving&wisTitle=\(withoutDiacritics)&format=json"
+        let urlEncoded = name.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        url += "action=imageserving&wisTitle=\(urlEncoded)&format=json"
         return url
     }
     
-    static func getImageUrl(name: String, callback: @escaping (String?) -> Void){
+    static func getImageUrl(name: String, callback: @escaping (URL?) -> Void){
 
         let url = getUrlForImageUrl(name: name)
         Alamofire.request(url).responseJSON{ response in
-            var imageUrl: String?
+            var url: URL?
             
             switch response.result{
             case .success(let json):
-                if let dict = json as? [String: Any]{
-                    let imgObj = dict["image"] as! [String: Any]
-                    imageUrl = imgObj["imageserving"] as? String
+                if let dict = json as? [String: Any],
+                let imgObj = dict["image"] as? [String: Any],
+                let imageUrl = imgObj["imageserving"] as? String {
+                    
+                    var components = URLComponents(string: imageUrl)
+                    components?.scheme = "https"
+                    components?.path += "/scale-to-width-down/\(thumbWidth)"
+                    url = try! components?.asURL()
                 }
                 
             case .failure(let error):
                 print(error)
             }
-            
-            callback(imageUrl)
+            callback(url)
         }
     }
     

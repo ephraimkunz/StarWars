@@ -10,11 +10,12 @@ import Foundation
 struct Film: Displayable{
     var title: String
     var id: String
-    var mainImageLink: String?
+    var mainImageLink: URL?
+    var alternateId: String?
     
     init(json: [String: Any]) {
         self.title = json["title"] as! String
-        self.id = json["url"] as! String
+        self.id = DataUtilities.idFromUrl(url: json["url"] as! String)
     }
     
     func getName() -> String {
@@ -25,11 +26,15 @@ struct Film: Displayable{
         return id
     }
     
-    func getImageLink() -> String? {
+    func getImageLink() -> URL? {
         return mainImageLink
     }
     
-    mutating func setImageLink(link: String){
+    mutating func setImageLink(link: URL){
         mainImageLink = link
+    }
+    
+    mutating func setAlternateId(id: String){
+        alternateId = id
     }
 }
