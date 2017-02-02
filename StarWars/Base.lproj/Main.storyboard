@@ -151,5 +151,23 @@
             </objects>
             <point key="canvasLocation" x="61.600000000000001" y="68.815592203898049"/>
         </scene>
+        <!--Person Detail Table View Controller-->
+        <scene sceneID="LzW-IX-kAi">
+            <objects>
+                <tableViewController storyboardIdentifier="PersonDetailView" id="sGg-CP-m2t" customClass="PersonDetailTableViewController" customModule="StarWars" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="WOU-zX-Lju">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <connections>
+                            <outlet property="dataSource" destination="sGg-CP-m2t" id="hb9-Zl-lNP"/>
+                            <outlet property="delegate" destination="sGg-CP-m2t" id="1CD-re-Abh"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PNM-ZF-FCu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="56" y="873"/>
+        </scene>
     </scenes>
 </document>

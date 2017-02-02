@@ -16,6 +16,9 @@
 		18103EE61E3D85A5007A0D57 /* ItemsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18103EE51E3D85A5007A0D57 /* ItemsCollectionViewController.swift */; };
 		18103EEA1E3D9135007A0D57 /* DataRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18103EE91E3D9135007A0D57 /* DataRepo.swift */; };
 		18103EEE1E3DA2AB007A0D57 /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18103EED1E3DA2AB007A0D57 /* ItemCollectionViewCell.swift */; };
+		186246371E43BDEF001F77FC /* PersonDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186246361E43BDEF001F77FC /* PersonDetailTableViewController.swift */; };
+		186246391E43C21B001F77FC /* ScrollablePhotosCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186246381E43C21B001F77FC /* ScrollablePhotosCell.xib */; };
+		1862463B1E43C261001F77FC /* ScrollablePhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1862463A1E43C261001F77FC /* ScrollablePhotosTableViewCell.swift */; };
 		187AB49D1E40C3EA00A998F3 /* Displayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AB49C1E40C3EA00A998F3 /* Displayable.swift */; };
 		187AB49F1E40C49F00A998F3 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AB49E1E40C49F00A998F3 /* Planet.swift */; };
 		187AB4A11E40C4C400A998F3 /* Starship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AB4A01E40C4C400A998F3 /* Starship.swift */; };
@@ -41,6 +44,9 @@
 		18103EE51E3D85A5007A0D57 /* ItemsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsCollectionViewController.swift; sourceTree = "<group>"; };
 		18103EE91E3D9135007A0D57 /* DataRepo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataRepo.swift; sourceTree = "<group>"; };
 		18103EED1E3DA2AB007A0D57 /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		186246361E43BDEF001F77FC /* PersonDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonDetailTableViewController.swift; sourceTree = "<group>"; };
+		186246381E43C21B001F77FC /* ScrollablePhotosCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScrollablePhotosCell.xib; sourceTree = "<group>"; };
+		1862463A1E43C261001F77FC /* ScrollablePhotosTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollablePhotosTableViewCell.swift; sourceTree = "<group>"; };
 		187AB49C1E40C3EA00A998F3 /* Displayable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Displayable.swift; sourceTree = "<group>"; };
 		187AB49E1E40C49F00A998F3 /* Planet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		187AB4A01E40C4C400A998F3 /* Starship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Starship.swift; sourceTree = "<group>"; };
@@ -93,6 +99,7 @@
 				18103EF51E3DA83D007A0D57 /* Data Models */,
 				18103ECD1E3D6CF7007A0D57 /* AppDelegate.swift */,
 				18103ED11E3D6CF8007A0D57 /* Main.storyboard */,
+				186246381E43C21B001F77FC /* ScrollablePhotosCell.xib */,
 				18103EE91E3D9135007A0D57 /* DataRepo.swift */,
 				18103ED41E3D6CF8007A0D57 /* Assets.xcassets */,
 				18103ED61E3D6CF8007A0D57 /* LaunchScreen.storyboard */,
@@ -122,9 +129,11 @@
 			isa = PBXGroup;
 			children = (
 				18103EDF1E3D7394007A0D57 /* TopLevelCollectionViewController.swift */,
+				186246361E43BDEF001F77FC /* PersonDetailTableViewController.swift */,
 				18103EE51E3D85A5007A0D57 /* ItemsCollectionViewController.swift */,
 				187AB4B01E41232800A998F3 /* TopLevelCollectionViewCell.swift */,
 				18103EED1E3DA2AB007A0D57 /* ItemCollectionViewCell.swift */,
+				1862463A1E43C261001F77FC /* ScrollablePhotosTableViewCell.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -211,6 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18103ED81E3D6CF8007A0D57 /* LaunchScreen.storyboard in Resources */,
+				186246391E43C21B001F77FC /* ScrollablePhotosCell.xib in Resources */,
 				18103ED51E3D6CF8007A0D57 /* Assets.xcassets in Resources */,
 				18103ED31E3D6CF8007A0D57 /* Main.storyboard in Resources */,
 			);
@@ -271,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				186246371E43BDEF001F77FC /* PersonDetailTableViewController.swift in Sources */,
 				18103ECE1E3D6CF7007A0D57 /* AppDelegate.swift in Sources */,
 				187AB4A11E40C4C400A998F3 /* Starship.swift in Sources */,
 				18103EEA1E3D9135007A0D57 /* DataRepo.swift in Sources */,
@@ -283,6 +294,7 @@
 				187AB4AB1E40C54300A998F3 /* TopLevelItem.swift in Sources */,
 				187AB4B11E41232800A998F3 /* TopLevelCollectionViewCell.swift in Sources */,
 				187AB4A91E40C52800A998F3 /* Film.swift in Sources */,
+				1862463B1E43C261001F77FC /* ScrollablePhotosTableViewCell.swift in Sources */,
 				18103EE21E3D75BC007A0D57 /* EntityType.swift in Sources */,
 				187AB49D1E40C3EA00A998F3 /* Displayable.swift in Sources */,
 				18103EE61E3D85A5007A0D57 /* ItemsCollectionViewController.swift in Sources */,

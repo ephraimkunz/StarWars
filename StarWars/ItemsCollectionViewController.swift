@@ -44,16 +44,6 @@ class ItemsCollectionViewController: UICollectionViewController{
         // Dispose of any resources that can be recreated.
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -93,9 +83,13 @@ class ItemsCollectionViewController: UICollectionViewController{
                 }
             }
         }
-        
-        
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //Hardcode it for now
+        let personDetailVC = storyboard?.instantiateViewController(withIdentifier: "PersonDetailView") as! PersonDetailTableViewController
+        navigationController?.pushViewController(personDetailVC, animated: true)
     }
 
     // MARK: UICollectionViewDelegate
@@ -109,6 +103,7 @@ class ItemsCollectionViewController: UICollectionViewController{
         cell?.backgroundColor = UIColor.white
     }
     
+    //View that instantiates this will use this method to get the right one
     static func storyboardIdentifier() -> String{
         return storyboardId
     }
