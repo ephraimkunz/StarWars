@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="dx1-3Z-o8G" customClass="PhotoCollectionViewCell" customModule="StarWars" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aKo-lJ-ntS">
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="aKo-lJ-ntS" firstAttribute="leading" secondItem="dx1-3Z-o8G" secondAttribute="leading" id="36L-pa-olZ"/>
+                <constraint firstAttribute="bottom" secondItem="aKo-lJ-ntS" secondAttribute="bottom" id="Z13-ne-dgG"/>
+                <constraint firstAttribute="trailing" secondItem="aKo-lJ-ntS" secondAttribute="trailing" id="ae4-7B-OA0"/>
+                <constraint firstItem="aKo-lJ-ntS" firstAttribute="top" secondItem="dx1-3Z-o8G" secondAttribute="top" id="ngr-mf-IhM"/>
+            </constraints>
+            <connections>
+                <outlet property="image" destination="aKo-lJ-ntS" id="VvR-oY-x75"/>
+            </connections>
+            <point key="canvasLocation" x="12" y="0.0"/>
+        </collectionViewCell>
+    </objects>
+</document>

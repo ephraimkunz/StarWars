@@ -37,7 +37,7 @@ class PersonDetailTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 10
+        return 3
     }
 
     
@@ -48,7 +48,13 @@ class PersonDetailTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 300
+        return 120
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let scrollableCell = cell as? ScrollablePhotosTableViewCell else{ return}
+        
+        scrollableCell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
     }
  
 
@@ -96,5 +102,16 @@ class PersonDetailTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+}
 
+extension PersonDetailTableViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 50
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotoCollectionViewCell
+        cell.image.image = UIImage(named: "GenericImagePlaceholder")
+        
+        return cell
+    }
 }

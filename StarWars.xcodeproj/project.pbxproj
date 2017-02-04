@@ -16,6 +16,8 @@
 		18103EE61E3D85A5007A0D57 /* ItemsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18103EE51E3D85A5007A0D57 /* ItemsCollectionViewController.swift */; };
 		18103EEA1E3D9135007A0D57 /* DataRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18103EE91E3D9135007A0D57 /* DataRepo.swift */; };
 		18103EEE1E3DA2AB007A0D57 /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18103EED1E3DA2AB007A0D57 /* ItemCollectionViewCell.swift */; };
+		181D541D1E45A2A30032DBCA /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D541C1E45A2A30032DBCA /* PhotoCollectionViewCell.swift */; };
+		181D541F1E45A2B30032DBCA /* PhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181D541E1E45A2B30032DBCA /* PhotoCollectionViewCell.xib */; };
 		186246371E43BDEF001F77FC /* PersonDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186246361E43BDEF001F77FC /* PersonDetailTableViewController.swift */; };
 		186246391E43C21B001F77FC /* ScrollablePhotosCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186246381E43C21B001F77FC /* ScrollablePhotosCell.xib */; };
 		1862463B1E43C261001F77FC /* ScrollablePhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1862463A1E43C261001F77FC /* ScrollablePhotosTableViewCell.swift */; };
@@ -44,6 +46,8 @@
 		18103EE51E3D85A5007A0D57 /* ItemsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsCollectionViewController.swift; sourceTree = "<group>"; };
 		18103EE91E3D9135007A0D57 /* DataRepo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataRepo.swift; sourceTree = "<group>"; };
 		18103EED1E3DA2AB007A0D57 /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		181D541C1E45A2A30032DBCA /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		181D541E1E45A2B30032DBCA /* PhotoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCollectionViewCell.xib; sourceTree = "<group>"; };
 		186246361E43BDEF001F77FC /* PersonDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonDetailTableViewController.swift; sourceTree = "<group>"; };
 		186246381E43C21B001F77FC /* ScrollablePhotosCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScrollablePhotosCell.xib; sourceTree = "<group>"; };
 		1862463A1E43C261001F77FC /* ScrollablePhotosTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollablePhotosTableViewCell.swift; sourceTree = "<group>"; };
@@ -95,11 +99,11 @@
 		18103ECC1E3D6CF7007A0D57 /* StarWars */ = {
 			isa = PBXGroup;
 			children = (
+				189BC2701E461EA9005F2EB4 /* ScrollablePhotosCell */,
 				18103EF61E3DA852007A0D57 /* View Controllers */,
 				18103EF51E3DA83D007A0D57 /* Data Models */,
 				18103ECD1E3D6CF7007A0D57 /* AppDelegate.swift */,
 				18103ED11E3D6CF8007A0D57 /* Main.storyboard */,
-				186246381E43C21B001F77FC /* ScrollablePhotosCell.xib */,
 				18103EE91E3D9135007A0D57 /* DataRepo.swift */,
 				18103ED41E3D6CF8007A0D57 /* Assets.xcassets */,
 				18103ED61E3D6CF8007A0D57 /* LaunchScreen.storyboard */,
@@ -133,9 +137,19 @@
 				18103EE51E3D85A5007A0D57 /* ItemsCollectionViewController.swift */,
 				187AB4B01E41232800A998F3 /* TopLevelCollectionViewCell.swift */,
 				18103EED1E3DA2AB007A0D57 /* ItemCollectionViewCell.swift */,
-				1862463A1E43C261001F77FC /* ScrollablePhotosTableViewCell.swift */,
 			);
 			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		189BC2701E461EA9005F2EB4 /* ScrollablePhotosCell */ = {
+			isa = PBXGroup;
+			children = (
+				1862463A1E43C261001F77FC /* ScrollablePhotosTableViewCell.swift */,
+				181D541E1E45A2B30032DBCA /* PhotoCollectionViewCell.xib */,
+				186246381E43C21B001F77FC /* ScrollablePhotosCell.xib */,
+				181D541C1E45A2A30032DBCA /* PhotoCollectionViewCell.swift */,
+			);
+			name = ScrollablePhotosCell;
 			sourceTree = "<group>";
 		};
 		A706B6E0CC21DF5CEC7804B3 /* Frameworks */ = {
@@ -220,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18103ED81E3D6CF8007A0D57 /* LaunchScreen.storyboard in Resources */,
+				181D541F1E45A2B30032DBCA /* PhotoCollectionViewCell.xib in Resources */,
 				186246391E43C21B001F77FC /* ScrollablePhotosCell.xib in Resources */,
 				18103ED51E3D6CF8007A0D57 /* Assets.xcassets in Resources */,
 				18103ED31E3D6CF8007A0D57 /* Main.storyboard in Resources */,
@@ -285,6 +300,7 @@
 				18103ECE1E3D6CF7007A0D57 /* AppDelegate.swift in Sources */,
 				187AB4A11E40C4C400A998F3 /* Starship.swift in Sources */,
 				18103EEA1E3D9135007A0D57 /* DataRepo.swift in Sources */,
+				181D541D1E45A2A30032DBCA /* PhotoCollectionViewCell.swift in Sources */,
 				187AB4AF1E4102CA00A998F3 /* DataUtilities.swift in Sources */,
 				187AB4A71E40C50900A998F3 /* Vehicle.swift in Sources */,
 				18103EE01E3D7394007A0D57 /* TopLevelCollectionViewController.swift in Sources */,
