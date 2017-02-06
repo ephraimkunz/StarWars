@@ -15,6 +15,9 @@ class PersonDetailTableViewController: UITableViewController {
         
         let nib = UINib(nibName: "ScrollablePhotosCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "ScrollablePhotosCell")
+        
+        tableView.estimatedRowHeight = 120
+        tableView.rowHeight = UITableViewAutomaticDimension
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -37,7 +40,7 @@ class PersonDetailTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return 1
     }
 
     
@@ -45,10 +48,6 @@ class PersonDetailTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScrollablePhotosCell", for: indexPath)
         
         return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
