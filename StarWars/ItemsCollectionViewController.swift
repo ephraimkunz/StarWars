@@ -30,13 +30,6 @@ class ItemsCollectionViewController: UICollectionViewController{
                 self.collectionView?.reloadData()
             }
         }
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,7 +40,6 @@ class ItemsCollectionViewController: UICollectionViewController{
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
@@ -89,6 +81,8 @@ class ItemsCollectionViewController: UICollectionViewController{
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //Hardcode it for now
         let personDetailVC = storyboard?.instantiateViewController(withIdentifier: "PersonDetailView") as! PersonDetailTableViewController
+        personDetailVC.name = (collectionView.cellForItem(at: indexPath) as! ItemCollectionViewCell).name.text!
+        
         navigationController?.pushViewController(personDetailVC, animated: true)
     }
 

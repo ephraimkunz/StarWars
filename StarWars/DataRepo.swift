@@ -14,6 +14,30 @@ private let WookieBaseUrl = "https://starwars.wikia.com/api.php?"
 private let SWAPI_ITEMS_PER_PAGE = 10 //SWAPI gives us maximum 10 items at a time
 private let thumbWidth = 300 //Width in pixels of a thumbnail image
 
+/*
+ The api we use to get all the images for a given person or thing unfortunately returns a lot of images
+ that are not pertinant (i.e. logos for the webpage). We will filter these out here until we find something
+ better.
+ */
+private let badImageNames: Set<String> = [
+    "http://vignette3.wikia.nocookie.net/starwars/images/8/83/Encyclopedia-Logo.jpg/revision/latest?cb=20110914173933",
+    "http://vignette2.wikia.nocookie.net/starwars/images/3/3c/Eras-canon.png/revision/latest?cb=20140430172811",
+    "http://vignette4.wikia.nocookie.net/starwars/images/d/db/StarWars-DatabankII.png/revision/latest?cb=20140701201231",
+    "http://vignette3.wikia.nocookie.net/starwars/images/c/c8/TCW_mini_logo.jpg/revision/latest?cb=20081006205514",
+    "http://vignette1.wikia.nocookie.net/starwars/images/7/7d/Tab-canon-white.png/revision/latest?cb=20140430180745",
+    "http://vignette1.wikia.nocookie.net/starwars/images/2/28/Tab-legends-black.png/revision/latest?cb=20140430180745",
+    "http://vignette4.wikia.nocookie.net/starwars/images/2/28/SWCustom-2011.png/revision/latest?cb=20110915020525",
+    "http://vignette2.wikia.nocookie.net/starwars/images/f/f8/30px-Era-Sprotect.png/revision/latest?cb=20081224180022",
+    "http://vignette4.wikia.nocookie.net/starwars/images/7/7e/Droid_Tales_mini_logo.jpg/revision/latest?cb=20160521045748",
+    "http://vignette4.wikia.nocookie.net/starwars/images/c/ca/The_Freemakers_mini_logo.png/revision/latest?cb=20160521052417",
+    "http://vignette1.wikia.nocookie.net/starwars/images/b/b9/Rebels-mini-logo.png/revision/latest?cb=20140812005323",
+    "http://vignette1.wikia.nocookie.net/starwars/images/a/a6/Gnome-speakernotes.png/revision/latest?cb=20050614200519",
+    "http://vignette2.wikia.nocookie.net/starwars/images/5/53/HasbroInverted.png/revision/latest?cb=20151007232731",
+    "http://vignette4.wikia.nocookie.net/starwars/images/4/4c/30px-Era-imp.png/revision/latest?cb=20070930172639",
+    "http://vignette2.wikia.nocookie.net/starwars/images/d/d3/30px-Era-reb.png/revision/latest?cb=20070930172814",
+    "http://vignette2.wikia.nocookie.net/starwars/images/2/26/30px-FormerGAicon.png/revision/latest?cb=20081006233608"
+]
+
 class DataRepo {
     //Get all swapi items of type, walking through the paginated results and sorting the returned array
     static func getAllSwapiItems(type: EntityType, callback: @escaping ([Displayable]) -> Void){
@@ -125,6 +149,13 @@ class DataRepo {
         return url
     }
     
+    private static func getUrlForAllImages(name: String) -> String{
+        var urlString = WookieBaseUrl
+        let urlEncoded = name.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        urlString += "action=query&generator=images&titles=\(urlEncoded)&indexpageids=&prop=imageinfo&iiprop=url&iiurlwidth=300&format=json"
+        return urlString
+    }
+    
     //Gets the thumbnail image url for a given item name
     static func getImageUrl(name: String, callback: @escaping (URL?) -> Void){
 
@@ -148,6 +179,40 @@ class DataRepo {
                 print(error)
             }
             callback(url)
+        }
+    }
+    
+    //Gets all images (full size) for a given item name
+    static func getImageUrls(name: String, callback: @escaping ([URL]) -> Void){
+        let url = getUrlForAllImages(name: name)
+        
+        Alamofire.request(url).responseJSON{ response in
+            var urls: [URL] = []
+            
+            switch response.result{
+            case .success(let json):
+                if let dict = json as? [String: Any],
+                    let query = dict["query"] as? [String: Any],
+                    let pageids = query["pageids"] as? [String],
+                    let pages = query["pages"] as? [String: Any] {
+                    
+                    for pageid in pageids{
+                        if let page = pages[pageid] as? [String: Any],
+                        let imageinfo = (page["imageinfo"] as? [Any])? [0] as? [String: Any],
+                            let thumburl = imageinfo["url"] as? String{
+                            if badImageNames.contains(thumburl){ continue} //Filter out irrelevant images
+                            
+                            var components = URLComponents(string: thumburl)!
+                            components.scheme = "https"
+                            urls.append(try! components.asURL())
+                        }
+                    }
+                }
+                
+            case .failure(let error):
+                print(error)
+            }
+            callback(urls)
         }
     }
     

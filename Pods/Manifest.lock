@@ -3,14 +3,12 @@ PODS:
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
-  - FLAnimatedImage (1.0.12)
-  - NYTPhotoViewer (1.2.0):
-    - NYTPhotoViewer/AnimatedGifSupport (= 1.2.0)
-    - NYTPhotoViewer/Core (= 1.2.0)
-  - NYTPhotoViewer/AnimatedGifSupport (1.2.0):
-    - FLAnimatedImage (~> 1.0.12)
-    - NYTPhotoViewer/Core
-  - NYTPhotoViewer/Core (1.2.0)
+  - DACircularProgress (2.3.1)
+  - IDMPhotoBrowser (1.10.1):
+    - DACircularProgress
+    - pop
+    - SDWebImage
+  - pop (1.0.9)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
@@ -18,7 +16,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
-  - NYTPhotoViewer
+  - IDMPhotoBrowser
   - SDWebImage
 
 EXTERNAL SOURCES:
@@ -33,10 +31,11 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
-  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
-  NYTPhotoViewer: 323217e4590a1586eb3c9674b3fefb0fb8b57896
+  DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
+  IDMPhotoBrowser: 379a8bfcad613356e4b478cb53561bdac6c6f92e
+  pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: 5d51af3496fbc6e0ffb9897880d686b1bfffaa48
+PODFILE CHECKSUM: e6fe39c938f409be11d776e88bde97f063135fe6
 
 COCOAPODS: 1.0.0

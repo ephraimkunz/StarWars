@@ -9,5 +9,5 @@ target 'StarWars' do
 pod 'Alamofire'
 pod 'SDWebImage'
 pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
-pod 'NYTPhotoViewer'
+pod 'IDMPhotoBrowser'
 end
