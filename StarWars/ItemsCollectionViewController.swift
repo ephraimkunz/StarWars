@@ -81,9 +81,12 @@ class ItemsCollectionViewController: UICollectionViewController{
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //Hardcode it for now
         let personDetailVC = storyboard?.instantiateViewController(withIdentifier: "PersonDetailView") as! PersonDetailTableViewController
-        personDetailVC.name = (collectionView.cellForItem(at: indexPath) as! ItemCollectionViewCell).name.text!
         
-        navigationController?.pushViewController(personDetailVC, animated: true)
+        if let item = items?[indexPath.row]{
+            personDetailVC.name = item.getName()
+            personDetailVC.id = item.getId()
+            navigationController?.pushViewController(personDetailVC, animated: true)
+        }
     }
 
     // MARK: UICollectionViewDelegate

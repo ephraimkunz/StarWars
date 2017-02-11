@@ -1,14 +1,14 @@
 //
-//  PersonInfoTableViewCell.swift
-//  StarWars
+//  HeightMassTableViewCell.swift
+//  
 //
-//  Created by Ephraim Kunz on 2/7/17.
-//  Copyright © 2017 Ephraim Kunz. All rights reserved.
+//  Created by Ephraim Kunz on 2/11/17.
+//
 //
 
 import UIKit
 
-class PersonInfoTableViewCell: UITableViewCell {
+class HeightMassTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -217,7 +217,7 @@ class DataRepo {
     }
     
     //Gets the base swapi url for a given EntityType
-    private static func getRequestUrl(type: EntityType, id: Int?) -> String {
+    private static func getRequestUrl(type: EntityType, id: String?) -> String {
         var url = SwapiBaseUrl
         
         switch(type){
@@ -246,5 +246,29 @@ class DataRepo {
         }
         
         return url
+    }
+    
+    //MARK: Individual Items
+    static func getPerson(id: String, callback: @escaping (Person?) -> Void){
+        let requestUrl = getRequestUrl(type: .people, id: id)
+        
+        Alamofire.request(requestUrl).responseJSON{ response in
+            switch response.result{
+            case .success(let json):
+                //print(json)
+                
+                var item: Person?
+                
+                if let dict = json as? [String: Any]{
+                    item = Person(json: dict)
+                    item!.addPersonProperties(json: dict)
+                }
+                callback(item)
+                
+            case .failure(let error):
+                print(error)
+                callback(nil)
+            }
+        }
     }
 }

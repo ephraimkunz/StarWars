@@ -18,6 +18,7 @@
 		18103EEE1E3DA2AB007A0D57 /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18103EED1E3DA2AB007A0D57 /* ItemCollectionViewCell.swift */; };
 		181D541D1E45A2A30032DBCA /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D541C1E45A2A30032DBCA /* PhotoCollectionViewCell.swift */; };
 		181D541F1E45A2B30032DBCA /* PhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181D541E1E45A2B30032DBCA /* PhotoCollectionViewCell.xib */; };
+		184D7C741E4FAD870053143C /* BodyColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184D7C731E4FAD870053143C /* BodyColorTableViewCell.swift */; };
 		186246371E43BDEF001F77FC /* PersonDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186246361E43BDEF001F77FC /* PersonDetailTableViewController.swift */; };
 		186246391E43C21B001F77FC /* ScrollablePhotosCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186246381E43C21B001F77FC /* ScrollablePhotosCell.xib */; };
 		1862463B1E43C261001F77FC /* ScrollablePhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1862463A1E43C261001F77FC /* ScrollablePhotosTableViewCell.swift */; };
@@ -32,8 +33,11 @@
 		187AB4AF1E4102CA00A998F3 /* DataUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AB4AE1E4102CA00A998F3 /* DataUtilities.swift */; };
 		187AB4B11E41232800A998F3 /* TopLevelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AB4B01E41232800A998F3 /* TopLevelCollectionViewCell.swift */; };
 		189BC2741E498A02005F2EB4 /* Array+Rotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189BC2731E498A02005F2EB4 /* Array+Rotate.swift */; };
-		189BC2761E4A13EB005F2EB4 /* PersonInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189BC2751E4A13EB005F2EB4 /* PersonInfoCell.xib */; };
-		189BC2791E4A152A005F2EB4 /* PersonInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189BC2781E4A152A005F2EB4 /* PersonInfoTableViewCell.swift */; };
+		189BC2761E4A13EB005F2EB4 /* HeightMassCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189BC2751E4A13EB005F2EB4 /* HeightMassCell.xib */; };
+		18E795FB1E4F73B800647ED2 /* BodyColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E795FA1E4F73B800647ED2 /* BodyColorCell.xib */; };
+		18E795FD1E4F73D600647ED2 /* GenderBirthyearCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E795FC1E4F73D600647ED2 /* GenderBirthyearCell.xib */; };
+		18E795FF1E4F91D500647ED2 /* HeightMassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E795FE1E4F91D500647ED2 /* HeightMassTableViewCell.swift */; };
+		18E796011E4F976B00647ED2 /* GenderBirthyearTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E796001E4F976B00647ED2 /* GenderBirthyearTableViewCell.swift */; };
 		5AC3292D68BAF205B1F7C785 /* Pods_StarWars.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E56E9F81676407FC3765D0D /* Pods_StarWars.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +55,7 @@
 		18103EED1E3DA2AB007A0D57 /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		181D541C1E45A2A30032DBCA /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		181D541E1E45A2B30032DBCA /* PhotoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCollectionViewCell.xib; sourceTree = "<group>"; };
+		184D7C731E4FAD870053143C /* BodyColorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyColorTableViewCell.swift; sourceTree = "<group>"; };
 		186246361E43BDEF001F77FC /* PersonDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonDetailTableViewController.swift; sourceTree = "<group>"; };
 		186246381E43C21B001F77FC /* ScrollablePhotosCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScrollablePhotosCell.xib; sourceTree = "<group>"; };
 		1862463A1E43C261001F77FC /* ScrollablePhotosTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollablePhotosTableViewCell.swift; sourceTree = "<group>"; };
@@ -65,8 +70,11 @@
 		187AB4AE1E4102CA00A998F3 /* DataUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataUtilities.swift; sourceTree = "<group>"; };
 		187AB4B01E41232800A998F3 /* TopLevelCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopLevelCollectionViewCell.swift; sourceTree = "<group>"; };
 		189BC2731E498A02005F2EB4 /* Array+Rotate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Rotate.swift"; sourceTree = "<group>"; };
-		189BC2751E4A13EB005F2EB4 /* PersonInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonInfoCell.xib; sourceTree = "<group>"; };
-		189BC2781E4A152A005F2EB4 /* PersonInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonInfoTableViewCell.swift; sourceTree = "<group>"; };
+		189BC2751E4A13EB005F2EB4 /* HeightMassCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeightMassCell.xib; sourceTree = "<group>"; };
+		18E795FA1E4F73B800647ED2 /* BodyColorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BodyColorCell.xib; sourceTree = "<group>"; };
+		18E795FC1E4F73D600647ED2 /* GenderBirthyearCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenderBirthyearCell.xib; sourceTree = "<group>"; };
+		18E795FE1E4F91D500647ED2 /* HeightMassTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeightMassTableViewCell.swift; sourceTree = "<group>"; };
+		18E796001E4F976B00647ED2 /* GenderBirthyearTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenderBirthyearTableViewCell.swift; sourceTree = "<group>"; };
 		2E56E9F81676407FC3765D0D /* Pods_StarWars.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StarWars.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C6A5B5BA3314CB9002583BA /* Pods-StarWars.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarWars.release.xcconfig"; path = "Pods/Target Support Files/Pods-StarWars/Pods-StarWars.release.xcconfig"; sourceTree = "<group>"; };
 		EE4C1800A80562814722E920 /* Pods-StarWars.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarWars.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StarWars/Pods-StarWars.debug.xcconfig"; sourceTree = "<group>"; };
@@ -106,7 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				189BC2701E461EA9005F2EB4 /* ScrollablePhotosCell */,
-				189BC2771E4A1427005F2EB4 /* PersonInfoCell */,
+				189BC2771E4A1427005F2EB4 /* PersonInfoCells */,
 				18103EF61E3DA852007A0D57 /* View Controllers */,
 				18103EF51E3DA83D007A0D57 /* Data Models */,
 				18103ECD1E3D6CF7007A0D57 /* AppDelegate.swift */,
@@ -160,13 +168,17 @@
 			name = ScrollablePhotosCell;
 			sourceTree = "<group>";
 		};
-		189BC2771E4A1427005F2EB4 /* PersonInfoCell */ = {
+		189BC2771E4A1427005F2EB4 /* PersonInfoCells */ = {
 			isa = PBXGroup;
 			children = (
-				189BC2751E4A13EB005F2EB4 /* PersonInfoCell.xib */,
-				189BC2781E4A152A005F2EB4 /* PersonInfoTableViewCell.swift */,
+				189BC2751E4A13EB005F2EB4 /* HeightMassCell.xib */,
+				18E795FA1E4F73B800647ED2 /* BodyColorCell.xib */,
+				184D7C731E4FAD870053143C /* BodyColorTableViewCell.swift */,
+				18E795FC1E4F73D600647ED2 /* GenderBirthyearCell.xib */,
+				18E796001E4F976B00647ED2 /* GenderBirthyearTableViewCell.swift */,
+				18E795FE1E4F91D500647ED2 /* HeightMassTableViewCell.swift */,
 			);
-			name = PersonInfoCell;
+			name = PersonInfoCells;
 			sourceTree = "<group>";
 		};
 		A706B6E0CC21DF5CEC7804B3 /* Frameworks */ = {
@@ -251,8 +263,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				18103ED81E3D6CF8007A0D57 /* LaunchScreen.storyboard in Resources */,
+				18E795FB1E4F73B800647ED2 /* BodyColorCell.xib in Resources */,
 				181D541F1E45A2B30032DBCA /* PhotoCollectionViewCell.xib in Resources */,
-				189BC2761E4A13EB005F2EB4 /* PersonInfoCell.xib in Resources */,
+				189BC2761E4A13EB005F2EB4 /* HeightMassCell.xib in Resources */,
+				18E795FD1E4F73D600647ED2 /* GenderBirthyearCell.xib in Resources */,
 				186246391E43C21B001F77FC /* ScrollablePhotosCell.xib in Resources */,
 				18103ED51E3D6CF8007A0D57 /* Assets.xcassets in Resources */,
 				18103ED31E3D6CF8007A0D57 /* Main.storyboard in Resources */,
@@ -314,6 +328,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18E795FF1E4F91D500647ED2 /* HeightMassTableViewCell.swift in Sources */,
 				186246371E43BDEF001F77FC /* PersonDetailTableViewController.swift in Sources */,
 				18103ECE1E3D6CF7007A0D57 /* AppDelegate.swift in Sources */,
 				187AB4A11E40C4C400A998F3 /* Starship.swift in Sources */,
@@ -327,14 +342,15 @@
 				187AB4A31E40C4DB00A998F3 /* Person.swift in Sources */,
 				18103EEE1E3DA2AB007A0D57 /* ItemCollectionViewCell.swift in Sources */,
 				187AB4AB1E40C54300A998F3 /* TopLevelItem.swift in Sources */,
-				189BC2791E4A152A005F2EB4 /* PersonInfoTableViewCell.swift in Sources */,
 				187AB4B11E41232800A998F3 /* TopLevelCollectionViewCell.swift in Sources */,
 				187AB4A91E40C52800A998F3 /* Film.swift in Sources */,
 				1862463B1E43C261001F77FC /* ScrollablePhotosTableViewCell.swift in Sources */,
+				184D7C741E4FAD870053143C /* BodyColorTableViewCell.swift in Sources */,
 				18103EE21E3D75BC007A0D57 /* EntityType.swift in Sources */,
 				187AB49D1E40C3EA00A998F3 /* Displayable.swift in Sources */,
 				18103EE61E3D85A5007A0D57 /* ItemsCollectionViewController.swift in Sources */,
 				187AB49F1E40C49F00A998F3 /* Planet.swift in Sources */,
+				18E796011E4F976B00647ED2 /* GenderBirthyearTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
