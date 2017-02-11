@@ -32,6 +32,8 @@
 		187AB4AF1E4102CA00A998F3 /* DataUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AB4AE1E4102CA00A998F3 /* DataUtilities.swift */; };
 		187AB4B11E41232800A998F3 /* TopLevelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AB4B01E41232800A998F3 /* TopLevelCollectionViewCell.swift */; };
 		189BC2741E498A02005F2EB4 /* Array+Rotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189BC2731E498A02005F2EB4 /* Array+Rotate.swift */; };
+		189BC2761E4A13EB005F2EB4 /* PersonInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189BC2751E4A13EB005F2EB4 /* PersonInfoCell.xib */; };
+		189BC2791E4A152A005F2EB4 /* PersonInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189BC2781E4A152A005F2EB4 /* PersonInfoTableViewCell.swift */; };
 		5AC3292D68BAF205B1F7C785 /* Pods_StarWars.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E56E9F81676407FC3765D0D /* Pods_StarWars.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +65,8 @@
 		187AB4AE1E4102CA00A998F3 /* DataUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataUtilities.swift; sourceTree = "<group>"; };
 		187AB4B01E41232800A998F3 /* TopLevelCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopLevelCollectionViewCell.swift; sourceTree = "<group>"; };
 		189BC2731E498A02005F2EB4 /* Array+Rotate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Rotate.swift"; sourceTree = "<group>"; };
+		189BC2751E4A13EB005F2EB4 /* PersonInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonInfoCell.xib; sourceTree = "<group>"; };
+		189BC2781E4A152A005F2EB4 /* PersonInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonInfoTableViewCell.swift; sourceTree = "<group>"; };
 		2E56E9F81676407FC3765D0D /* Pods_StarWars.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StarWars.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C6A5B5BA3314CB9002583BA /* Pods-StarWars.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarWars.release.xcconfig"; path = "Pods/Target Support Files/Pods-StarWars/Pods-StarWars.release.xcconfig"; sourceTree = "<group>"; };
 		EE4C1800A80562814722E920 /* Pods-StarWars.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarWars.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StarWars/Pods-StarWars.debug.xcconfig"; sourceTree = "<group>"; };
@@ -102,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				189BC2701E461EA9005F2EB4 /* ScrollablePhotosCell */,
+				189BC2771E4A1427005F2EB4 /* PersonInfoCell */,
 				18103EF61E3DA852007A0D57 /* View Controllers */,
 				18103EF51E3DA83D007A0D57 /* Data Models */,
 				18103ECD1E3D6CF7007A0D57 /* AppDelegate.swift */,
@@ -153,6 +158,15 @@
 				181D541C1E45A2A30032DBCA /* PhotoCollectionViewCell.swift */,
 			);
 			name = ScrollablePhotosCell;
+			sourceTree = "<group>";
+		};
+		189BC2771E4A1427005F2EB4 /* PersonInfoCell */ = {
+			isa = PBXGroup;
+			children = (
+				189BC2751E4A13EB005F2EB4 /* PersonInfoCell.xib */,
+				189BC2781E4A152A005F2EB4 /* PersonInfoTableViewCell.swift */,
+			);
+			name = PersonInfoCell;
 			sourceTree = "<group>";
 		};
 		A706B6E0CC21DF5CEC7804B3 /* Frameworks */ = {
@@ -238,6 +252,7 @@
 			files = (
 				18103ED81E3D6CF8007A0D57 /* LaunchScreen.storyboard in Resources */,
 				181D541F1E45A2B30032DBCA /* PhotoCollectionViewCell.xib in Resources */,
+				189BC2761E4A13EB005F2EB4 /* PersonInfoCell.xib in Resources */,
 				186246391E43C21B001F77FC /* ScrollablePhotosCell.xib in Resources */,
 				18103ED51E3D6CF8007A0D57 /* Assets.xcassets in Resources */,
 				18103ED31E3D6CF8007A0D57 /* Main.storyboard in Resources */,
@@ -312,6 +327,7 @@
 				187AB4A31E40C4DB00A998F3 /* Person.swift in Sources */,
 				18103EEE1E3DA2AB007A0D57 /* ItemCollectionViewCell.swift in Sources */,
 				187AB4AB1E40C54300A998F3 /* TopLevelItem.swift in Sources */,
+				189BC2791E4A152A005F2EB4 /* PersonInfoTableViewCell.swift in Sources */,
 				187AB4B11E41232800A998F3 /* TopLevelCollectionViewCell.swift in Sources */,
 				187AB4A91E40C52800A998F3 /* Film.swift in Sources */,
 				1862463B1E43C261001F77FC /* ScrollablePhotosTableViewCell.swift in Sources */,

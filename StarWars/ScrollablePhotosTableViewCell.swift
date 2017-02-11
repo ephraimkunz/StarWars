@@ -16,10 +16,10 @@ class ScrollablePhotosTableViewCell: UITableViewCell, UICollectionViewDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Shadow
-        outerView.layer.cornerRadius = 5
-        outerView.layer.shadowOffset = CGSize(width: 3, height: 3)
-        outerView.layer.shadowOpacity = 0.2;
-        outerView.layer.shadowRadius = 1.0;
+//        outerView.layer.cornerRadius = 5
+//        outerView.layer.shadowOffset = CGSize(width: 3, height: 3)
+//        outerView.layer.shadowOpacity = 0.2;
+//        outerView.layer.shadowRadius = 1.0;
         
         collectionView.delegate = self
         

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PersonInfoCell" rowHeight="314" id="ZQQ-dy-rrm" customClass="PersonInfoTableViewCell" customModule="StarWars" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="446" height="314"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZQQ-dy-rrm" id="hZu-mi-Vqt">
+                <rect key="frame" x="0.0" y="0.0" width="446" height="314"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GW4-ex-czp">
+                        <rect key="frame" x="0.0" y="0.0" width="446" height="313.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="GW4-ex-czp" firstAttribute="leading" secondItem="hZu-mi-Vqt" secondAttribute="leading" id="0fy-hJ-D8T"/>
+                    <constraint firstAttribute="bottom" secondItem="GW4-ex-czp" secondAttribute="bottom" id="6Pm-xo-BLg"/>
+                    <constraint firstAttribute="trailing" secondItem="GW4-ex-czp" secondAttribute="trailing" id="Lg2-hl-MdS"/>
+                    <constraint firstItem="GW4-ex-czp" firstAttribute="top" secondItem="hZu-mi-Vqt" secondAttribute="top" id="fSL-j9-t9G"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+            <point key="canvasLocation" x="29" y="96"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -24,6 +24,8 @@ class PersonDetailTableViewController: UITableViewController {
         tableView.estimatedRowHeight = 120
         tableView.rowHeight = UITableViewAutomaticDimension
         
+        self.title = name
+        
         //Start the image fetch
         DataRepo.getImageUrls(name: name){ items in
             images = items
@@ -43,12 +45,23 @@ class PersonDetailTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ScrollablePhotosCell", for: indexPath)
+        var cell: UITableViewCell
+        
+        switch(indexPath.row){
+        case 0:
+            cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath)
+            cell.textLabel?.text = "Images"
+        case 1:
+            cell = tableView.dequeueReusableCell(withIdentifier: "ScrollablePhotosCell", for: indexPath)
+        default:
+            cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath)
+            cell.textLabel?.text = "Unusued, shouldn't show up"
+        }
     
         return cell
     }
