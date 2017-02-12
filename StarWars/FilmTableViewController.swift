@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FilmTableViewController: UITableViewController {
+class FilmTableViewController: UITableViewController, VCWithName {
     var name: String = ""
     var id: String = ""
     var photosCollectionView: UICollectionView?
@@ -16,7 +16,7 @@ class FilmTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = name
+        self.title = "film "  + name
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

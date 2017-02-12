@@ -80,27 +80,27 @@ class ItemsCollectionViewController: UICollectionViewController{
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         var nextVC: VCWithName
-        switch entity{
-        case .people:
-            nextVC = storyboard?.instantiateViewController(withIdentifier: "PersonDetailView") as! PersonDetailTableViewController
-        case .planets:
-            storyboard?.instantiateViewController(withIdentifier: "PlanetDetailView") as! PersonDetailTableViewController
-        case .vehicles:
-            storyboard?.instantiateViewController(withIdentifier: "VehicleDetailView") as! PersonDetailTableViewController
-        case .starships:
-            storyboard?.instantiateViewController(withIdentifier: "StarshipDetailView") as! PersonDetailTableViewController
-        case .species:
-            storyboard?.instantiateViewController(withIdentifier: "SpeciesDetailView") as! PersonDetailTableViewController
-        case .films:
-            storyboard?.instantiateViewController(withIdentifier: "FilmDetailView") as! PersonDetailTableViewController
-        default:
-            storyboard?.instantiateViewController(withIdentifier: "PersonDetailView") as! PersonDetailTableViewController
-        }
-        
-        if let item = items?[indexPath.row]{
-            nextVC.name = item.getName()
-            nextVC.id = item.getId()
-            navigationController?.pushViewController(personDetailVC, animated: true)
+        if let entity = entity{
+            switch entity.type{
+            case .people:
+                nextVC = storyboard?.instantiateViewController(withIdentifier: "PersonDetailView") as! VCWithName
+            case .planets:
+                nextVC = storyboard?.instantiateViewController(withIdentifier: "PlanetDetailView") as! VCWithName
+            case .vehicles:
+                nextVC = storyboard?.instantiateViewController(withIdentifier: "VehicleDetailView") as! VCWithName
+            case .starships:
+                nextVC = storyboard?.instantiateViewController(withIdentifier: "StarshipDetailView") as! VCWithName
+            case .species:
+                nextVC = storyboard?.instantiateViewController(withIdentifier: "SpeciesDetailView") as! VCWithName
+            case .films:
+                nextVC = storyboard?.instantiateViewController(withIdentifier: "FilmDetailView") as! VCWithName
+            }
+            
+            if let item = items?[indexPath.row]{
+                nextVC.name = item.getName()
+                nextVC.id = item.getId()
+                navigationController?.pushViewController(nextVC as! UIViewController, animated: true)
+            }
         }
     }
 

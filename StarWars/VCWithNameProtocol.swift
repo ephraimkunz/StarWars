@@ -8,6 +8,6 @@
 
 import Foundation
 protocol VCWithName {
-    var name: String
-    var id: String
+    var name: String {get set}
+    var id: String {get set}
 }

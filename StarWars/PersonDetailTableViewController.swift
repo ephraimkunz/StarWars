@@ -316,15 +316,37 @@ class PersonDetailTableViewController: UITableViewController, VCWithName {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if(indexPath.section == VITALS_SECTION && indexPath.row == HOMEWORLD_ROW)
-        {
-            
+        var nextVC: VCWithName
+        var id: String?
+        
+        switch indexPath.section{
+        case VITALS_SECTION:
+            nextVC = storyboard?.instantiateViewController(withIdentifier: "PlanetDetailView") as! VCWithName
+            id = person?.homeworld
+        case VEHICLES_SECTION:
+            nextVC = storyboard?.instantiateViewController(withIdentifier: "VehicleDetailView") as! VCWithName
+            id = person?.vehicles[indexPath.row]
+        case STARSHIPS_SECTION:
+            nextVC = storyboard?.instantiateViewController(withIdentifier: "StarshipDetailView") as! VCWithName
+            id = person?.starships[indexPath.row]
+        case SPECIES_SECTION:
+            nextVC = storyboard?.instantiateViewController(withIdentifier: "SpeciesDetailView") as! VCWithName
+            id = person?.species[indexPath.row]
+        case FILMS_SECTION:
+            nextVC = storyboard?.instantiateViewController(withIdentifier: "FilmDetailView") as! VCWithName
+            id = person?.films[indexPath.row]
+        default:
+            return //Don't try to go anywhere
+        }
+        
+        if let person = person,
+            let id = id{
+            nextVC.name = person.getName()
+            nextVC.id = id
+            navigationController?.pushViewController(nextVC as! UIViewController, animated: true)
+
         }
     }
-    
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return UITableViewAutomaticDimension
-//    }
 }
 
 extension PersonDetailTableViewController: UICollectionViewDataSource, UICollectionViewDelegate{

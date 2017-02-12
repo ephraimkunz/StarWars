@@ -10,4 +10,6 @@ pod 'Alamofire'
 pod 'SDWebImage'
 pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
 pod 'IDMPhotoBrowser'
+pod 'Fabric'
+pod 'Crashlytics'
 end

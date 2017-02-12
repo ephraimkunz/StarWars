@@ -16,7 +16,7 @@ class StarshipTableViewController: UITableViewController, VCWithName {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = name
+        self.title = "starship " + name
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
