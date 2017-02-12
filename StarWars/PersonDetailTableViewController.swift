@@ -25,7 +25,7 @@ private let VEHICLES_SECTION = 5
 private let FILMS_SECTION = 3
 private let STARSHIPS_SECTION = 4
 
-class PersonDetailTableViewController: UITableViewController {
+class PersonDetailTableViewController: UITableViewController, VCWithName {
     var name: String = ""
     var id: String = ""
     var photosCollectionView: UICollectionView?

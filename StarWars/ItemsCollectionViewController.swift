@@ -79,12 +79,27 @@ class ItemsCollectionViewController: UICollectionViewController{
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //Hardcode it for now
-        let personDetailVC = storyboard?.instantiateViewController(withIdentifier: "PersonDetailView") as! PersonDetailTableViewController
+        var nextVC: VCWithName
+        switch entity{
+        case .people:
+            nextVC = storyboard?.instantiateViewController(withIdentifier: "PersonDetailView") as! PersonDetailTableViewController
+        case .planets:
+            storyboard?.instantiateViewController(withIdentifier: "PlanetDetailView") as! PersonDetailTableViewController
+        case .vehicles:
+            storyboard?.instantiateViewController(withIdentifier: "VehicleDetailView") as! PersonDetailTableViewController
+        case .starships:
+            storyboard?.instantiateViewController(withIdentifier: "StarshipDetailView") as! PersonDetailTableViewController
+        case .species:
+            storyboard?.instantiateViewController(withIdentifier: "SpeciesDetailView") as! PersonDetailTableViewController
+        case .films:
+            storyboard?.instantiateViewController(withIdentifier: "FilmDetailView") as! PersonDetailTableViewController
+        default:
+            storyboard?.instantiateViewController(withIdentifier: "PersonDetailView") as! PersonDetailTableViewController
+        }
         
         if let item = items?[indexPath.row]{
-            personDetailVC.name = item.getName()
-            personDetailVC.id = item.getId()
+            nextVC.name = item.getName()
+            nextVC.id = item.getId()
             navigationController?.pushViewController(personDetailVC, animated: true)
         }
     }
