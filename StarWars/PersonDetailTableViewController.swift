@@ -11,24 +11,34 @@ import IDMPhotoBrowser
 
 var images: [URL] = []
 
+private let FULL_IMAGE_SECTION = 0
 private let PHOTOS_SECTION = 6
-private let TITLEROW = 0
-private let VITALS_SECTION = 0
-private let HEIGHTMASS = 1
-private let GENDER_BIRTH = 2
-private let BODY_COLOR_ROW = 3
-private let HOMEWORLD_SECTION = 1
-private let SPECIES_SECTION = 2
-private let VEHICLES_SECTION = 3
-private let FILMS_SECTION = 4
-private let STARSHIPS_SECTION = 5
+private let VITALS_SECTION = 1
 
+private let HEIGHTMASS = 0
+private let GENDER_BIRTH = 1
+private let BODY_COLOR_ROW = 2
+private let HOMEWORLD_ROW = 3
+
+private let SPECIES_SECTION = 2
+private let VEHICLES_SECTION = 5
+private let FILMS_SECTION = 3
+private let STARSHIPS_SECTION = 4
 
 class PersonDetailTableViewController: UITableViewController {
     var name: String = ""
     var id: String = ""
     var photosCollectionView: UICollectionView?
     var person: Person?
+    var fullImageUrl: URL?
+    
+    var showSection: [Int: Bool] = [PHOTOS_SECTION: false,
+                                    VITALS_SECTION: false,
+                                    SPECIES_SECTION: false,
+                                    VEHICLES_SECTION: false,
+                                    STARSHIPS_SECTION: false,
+                                    FILMS_SECTION: false,
+                                    FULL_IMAGE_SECTION: false]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,20 +55,37 @@ class PersonDetailTableViewController: UITableViewController {
         nib = UINib(nibName: "BodyColorCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "BodyColorCell")
         
+        nib = UINib(nibName: "ImageCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "ImageCell")
+        
         tableView.estimatedRowHeight = 120
         tableView.rowHeight = UITableViewAutomaticDimension
         
         self.title = name
         
+        self.tableView.contentInset = UIEdgeInsetsMake(-36, 0, 0, 0); //Show the image aligned with bottom of navigation bar
+
+        
         //Start the image fetch
         DataRepo.getImageUrls(name: name){ items in
             images = items
+            if items.count > 0{
+                self.showSection[PHOTOS_SECTION] = true
+            }
             self.photosCollectionView?.reloadData()
         }
         
         //Fetch the person info
         DataRepo.getPerson(id: id) { person in
             self.person = person
+            if person != nil{
+                self.showSection[VITALS_SECTION] = true
+            }
+            self.tableView.reloadData()
+        }
+        
+        DataRepo.getImageUrl(name: name, scaledDown: true) { imageUrl in
+            self.fullImageUrl = imageUrl
             self.tableView.reloadData()
         }
     }
@@ -71,15 +98,51 @@ class PersonDetailTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 7
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section{
         case PHOTOS_SECTION:
-            return 2
+            return 1
         case VITALS_SECTION:
             return 4
+        case STARSHIPS_SECTION:
+            if let count = person?.starships.count{
+                if(count > 0){
+                    showSection[STARSHIPS_SECTION] = true
+                }
+                return count
+            } else{
+                return 0
+            }
+        case FILMS_SECTION:
+            if let count = person?.films.count{
+                if(count > 0){
+                    showSection[FILMS_SECTION] = true
+                }
+                return count
+            } else{
+                return 0
+            }
+        case VEHICLES_SECTION:
+            if let count = person?.vehicles.count{
+                if(count > 0){
+                    showSection[VEHICLES_SECTION] = true
+                }
+                return count
+            } else{
+                return 0
+            }
+        case SPECIES_SECTION:
+            if let count = person?.species.count{
+                if(count > 0){
+                    showSection[SPECIES_SECTION] = true
+                }
+                return count
+            } else{
+                return 0
+            }
         default:
             return 1
         }
@@ -90,21 +153,18 @@ class PersonDetailTableViewController: UITableViewController {
         var cell: UITableViewCell
         
         switch(indexPath.section){
+        case FULL_IMAGE_SECTION:
+            let fiCell = tableView.dequeueReusableCell(withIdentifier: "ImageCell", for: indexPath) as! ImageTableViewCell
+            if let fullImageUrl = fullImageUrl{
+                fiCell.fullImage.sd_setImage(with: fullImageUrl, placeholderImage: UIImage(named: "GenericImagePLaceholder"))
+            }
+            
+            return fiCell
         case PHOTOS_SECTION:
-            if(indexPath.row == TITLEROW) {
-                cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath)
-                cell.textLabel?.text = "Images"
-            }
-            else {
-                cell = tableView.dequeueReusableCell(withIdentifier: "ScrollablePhotosCell", for: indexPath)
-            }
+            cell = tableView.dequeueReusableCell(withIdentifier: "ScrollablePhotosCell", for: indexPath)
 
         case VITALS_SECTION:
-            if(indexPath.row == TITLEROW){
-                cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath)
-                cell.textLabel?.text = "Vital Statistics"
-            }
-            else if indexPath.row == HEIGHTMASS {
+            if indexPath.row == HEIGHTMASS {
                 let hmCell = tableView.dequeueReusableCell(withIdentifier: "HeightMassCell", for: indexPath) as! HeightMassTableViewCell
                 
                 if let mass = person?.mass,
@@ -141,10 +201,75 @@ class PersonDetailTableViewController: UITableViewController {
                 
                 return bcCell
             }
+            else if indexPath.row == HOMEWORLD_ROW{
+                cell = tableView.dequeueReusableCell(withIdentifier: "RightDetailCell", for: indexPath)
+                cell.textLabel?.text = "Homeworld"
+                cell.accessoryType = .disclosureIndicator
+                
+               if let person = person,
+                let homeworld = person.homeworld{
+                    DataRepo.getNameForId(id: homeworld, type: .planets) { name in
+                        cell.detailTextLabel?.text = name
+                    }
+                }
+            }
             else{
                 cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath)
                 cell.textLabel?.text = "Bad cell"
             }
+        case SPECIES_SECTION:
+            if let speciesArray = person?.species{
+                cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath)
+                cell.accessoryType = .disclosureIndicator
+                let id = speciesArray[indexPath.row]
+                DataRepo.getNameForId(id: id, type: .species){ name in
+                    cell.textLabel?.text = name
+                }
+            }
+            else{
+                cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath)
+                cell.textLabel?.text = "Bad cell"
+            }
+        case VEHICLES_SECTION:
+            if let vehiclesArray = person?.vehicles{
+                cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath)
+                cell.accessoryType = .disclosureIndicator
+                let id = vehiclesArray[indexPath.row]
+                DataRepo.getNameForId(id: id, type: .vehicles){ name in
+                    cell.textLabel?.text = name
+                }
+            }
+            else{
+                cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath)
+                cell.textLabel?.text = "Bad cell"
+            }
+        case FILMS_SECTION:
+            if let filmsArray = person?.films{
+                cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath)
+                cell.accessoryType = .disclosureIndicator
+                let id = filmsArray[indexPath.row]
+                DataRepo.getNameForId(id: id, type: .films){ name in
+                    cell.textLabel?.text = name
+                }
+            }
+            else{
+                cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath)
+                cell.textLabel?.text = "Bad cell"
+            }
+        case STARSHIPS_SECTION:
+            if let starshipsArray = person?.starships{
+                cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath)
+                cell.accessoryType = .disclosureIndicator
+                let id = starshipsArray[indexPath.row]
+                DataRepo.getNameForId(id: id, type: .starships){ name in
+                    cell.textLabel?.text = name
+                }
+            }
+            else{
+                cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath)
+                cell.textLabel?.text = "Bad cell"
+            }
+            
         default:
             cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath)
             cell.textLabel?.text = "Bad cell"
@@ -154,12 +279,52 @@ class PersonDetailTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.section == PHOTOS_SECTION && indexPath.row != TITLEROW {
+        if indexPath.section == PHOTOS_SECTION {
             guard let scrollableCell = cell as? ScrollablePhotosTableViewCell else{ return}
             scrollableCell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
             photosCollectionView = scrollableCell.getCollectionViewReference()
         }
     }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if !showSection[section]!{
+            return nil
+        }
+        switch section{
+        case PHOTOS_SECTION:
+            return "Images"
+        case VITALS_SECTION:
+            return "Vital Statistics"
+        case STARSHIPS_SECTION:
+            return "Starships"
+        case VEHICLES_SECTION:
+            return "Vehicles"
+        case SPECIES_SECTION:
+            return "Species"
+        case FILMS_SECTION:
+            return "Films"
+        default: return "Bad section title"
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return (indexPath.section == VITALS_SECTION && indexPath.row == HOMEWORLD_ROW) ||
+            indexPath.section == SPECIES_SECTION ||
+            indexPath.section == FILMS_SECTION ||
+            indexPath.section == VEHICLES_SECTION ||
+            indexPath.section == STARSHIPS_SECTION
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(indexPath.section == VITALS_SECTION && indexPath.row == HOMEWORLD_ROW)
+        {
+            
+        }
+    }
+    
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return UITableViewAutomaticDimension
+//    }
 }
 
 extension PersonDetailTableViewController: UICollectionViewDataSource, UICollectionViewDelegate{

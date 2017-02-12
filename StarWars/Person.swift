@@ -20,9 +20,9 @@ struct Person: Displayable{
     var eyeColor: String?
     var birthYear: String?
     var gender: String?
-    var homeworldId: String?
-    var speciesId: String?
+    var homeworld: String?
     
+    var species: [String] = []
     var films: [String] = []
     var vehicles: [String] = []
     var starships: [String] = []
@@ -43,7 +43,39 @@ struct Person: Displayable{
         self.gender = json["gender"] as? String
         
         if let homeworldPath = json["homeworld"] as? String{
-            self.homeworldId = DataUtilities.idFromUrl(url: homeworldPath)
+            self.homeworld = DataUtilities.idFromUrl(url: homeworldPath)
+        }
+        
+        if let speciesArray = json["species"] as? [Any]{
+            for specie in speciesArray{
+                if let specie = specie as? String{
+                    species.append(DataUtilities.idFromUrl(url: specie))
+                }
+            }
+        }
+        
+        if let filmsArray = json["films"] as? [Any]{
+            for film in filmsArray{
+                if let film = film as? String{
+                    films.append(DataUtilities.idFromUrl(url: film))
+                }
+            }
+        }
+        
+        if let vehiclesArray = json["vehicles"] as? [Any]{
+            for vehicle in vehiclesArray{
+                if let vehicle = vehicle as? String{
+                    vehicles.append(DataUtilities.idFromUrl(url: vehicle))
+                }
+            }
+        }
+        
+        if let starshipsArray = json["starships"] as? [Any]{
+            for starship in starshipsArray{
+                if let starship = starship as? String{
+                    starships.append(DataUtilities.idFromUrl(url: starship))
+                }
+            }
         }
     }
     

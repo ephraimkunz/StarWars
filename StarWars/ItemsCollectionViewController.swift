@@ -64,7 +64,7 @@ class ItemsCollectionViewController: UICollectionViewController{
             }
             else{ //Time to go get the image link
                 cell.image.image = UIImage(named: placeholderId) //Put a placeholder there for now
-                DataRepo.getImageUrl(name: item.getName()){ imageUrl in
+                DataRepo.getImageUrl(name: item.getName(), scaledDown: true){ imageUrl in
                     let item = self.items?[indexPath.row]
                     
                     if let imageUrl = imageUrl, var item = item{

@@ -19,6 +19,8 @@
 		181D541D1E45A2A30032DBCA /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D541C1E45A2A30032DBCA /* PhotoCollectionViewCell.swift */; };
 		181D541F1E45A2B30032DBCA /* PhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181D541E1E45A2B30032DBCA /* PhotoCollectionViewCell.xib */; };
 		184D7C741E4FAD870053143C /* BodyColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184D7C731E4FAD870053143C /* BodyColorTableViewCell.swift */; };
+		184D7C761E4FDC5B0053143C /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184D7C751E4FDC5B0053143C /* ImageCell.xib */; };
+		184D7C781E4FDC940053143C /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184D7C771E4FDC940053143C /* ImageTableViewCell.swift */; };
 		186246371E43BDEF001F77FC /* PersonDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186246361E43BDEF001F77FC /* PersonDetailTableViewController.swift */; };
 		186246391E43C21B001F77FC /* ScrollablePhotosCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186246381E43C21B001F77FC /* ScrollablePhotosCell.xib */; };
 		1862463B1E43C261001F77FC /* ScrollablePhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1862463A1E43C261001F77FC /* ScrollablePhotosTableViewCell.swift */; };
@@ -56,6 +58,8 @@
 		181D541C1E45A2A30032DBCA /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		181D541E1E45A2B30032DBCA /* PhotoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCollectionViewCell.xib; sourceTree = "<group>"; };
 		184D7C731E4FAD870053143C /* BodyColorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyColorTableViewCell.swift; sourceTree = "<group>"; };
+		184D7C751E4FDC5B0053143C /* ImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
+		184D7C771E4FDC940053143C /* ImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
 		186246361E43BDEF001F77FC /* PersonDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonDetailTableViewController.swift; sourceTree = "<group>"; };
 		186246381E43C21B001F77FC /* ScrollablePhotosCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScrollablePhotosCell.xib; sourceTree = "<group>"; };
 		1862463A1E43C261001F77FC /* ScrollablePhotosTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollablePhotosTableViewCell.swift; sourceTree = "<group>"; };
@@ -177,6 +181,8 @@
 				18E795FC1E4F73D600647ED2 /* GenderBirthyearCell.xib */,
 				18E796001E4F976B00647ED2 /* GenderBirthyearTableViewCell.swift */,
 				18E795FE1E4F91D500647ED2 /* HeightMassTableViewCell.swift */,
+				184D7C751E4FDC5B0053143C /* ImageCell.xib */,
+				184D7C771E4FDC940053143C /* ImageTableViewCell.swift */,
 			);
 			name = PersonInfoCells;
 			sourceTree = "<group>";
@@ -268,6 +274,7 @@
 				189BC2761E4A13EB005F2EB4 /* HeightMassCell.xib in Resources */,
 				18E795FD1E4F73D600647ED2 /* GenderBirthyearCell.xib in Resources */,
 				186246391E43C21B001F77FC /* ScrollablePhotosCell.xib in Resources */,
+				184D7C761E4FDC5B0053143C /* ImageCell.xib in Resources */,
 				18103ED51E3D6CF8007A0D57 /* Assets.xcassets in Resources */,
 				18103ED31E3D6CF8007A0D57 /* Main.storyboard in Resources */,
 			);
@@ -337,6 +344,7 @@
 				187AB4AF1E4102CA00A998F3 /* DataUtilities.swift in Sources */,
 				189BC2741E498A02005F2EB4 /* Array+Rotate.swift in Sources */,
 				187AB4A71E40C50900A998F3 /* Vehicle.swift in Sources */,
+				184D7C781E4FDC940053143C /* ImageTableViewCell.swift in Sources */,
 				18103EE01E3D7394007A0D57 /* TopLevelCollectionViewController.swift in Sources */,
 				187AB4A51E40C4F200A998F3 /* Species.swift in Sources */,
 				187AB4A31E40C4DB00A998F3 /* Person.swift in Sources */,

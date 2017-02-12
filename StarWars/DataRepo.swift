@@ -157,7 +157,7 @@ class DataRepo {
     }
     
     //Gets the thumbnail image url for a given item name
-    static func getImageUrl(name: String, callback: @escaping (URL?) -> Void){
+    static func getImageUrl(name: String, scaledDown: Bool, callback: @escaping (URL?) -> Void){
 
         let url = getUrlForImageUrl(name: name)
         Alamofire.request(url).responseJSON{ response in
@@ -171,7 +171,9 @@ class DataRepo {
                     
                     var components = URLComponents(string: imageUrl)
                     components?.scheme = "https"
-                    components?.path += "/scale-to-width-down/\(thumbWidth)"
+                    if scaledDown{
+                        components?.path += "/scale-to-width-down/\(thumbWidth)"
+                    }
                     url = try! components?.asURL()
                 }
                 
@@ -246,6 +248,30 @@ class DataRepo {
         }
         
         return url
+    }
+    
+    static func getNameForId(id: String, type: EntityType, callback: @escaping (String?) -> Void){
+        let requestUrl = getRequestUrl(type: type, id: id)
+        
+        Alamofire.request(requestUrl).responseJSON{ response in
+            switch response.result{
+            case .success(let json):
+                //print(json)
+                
+                var name: String?
+                
+                if let dict = json as? [String: Any]{
+                    let jsonName = type == EntityType.films ? "title" : "name"
+                    name = dict[jsonName] as? String
+                }
+                callback(name)
+                
+            case .failure(let error):
+                print(error)
+                callback(nil)
+            }
+        }
+
     }
     
     //MARK: Individual Items
