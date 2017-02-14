@@ -9,7 +9,7 @@
 import UIKit
 import IDMPhotoBrowser
 
-var images: [URL] = []
+private var images: [URL] = []
 
 private let FULL_IMAGE_SECTION = 0
 private let PHOTOS_SECTION = 6

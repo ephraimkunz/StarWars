@@ -297,4 +297,28 @@ class DataRepo {
             }
         }
     }
+    
+    static func getFilm(id: String, callback: @escaping (Film?) -> Void){
+        let requestUrl = getRequestUrl(type: .films, id: id)
+        
+        Alamofire.request(requestUrl).responseJSON{ response in
+            switch response.result{
+            case .success(let json):
+                //print(json)
+                
+                var item: Film?
+                
+                if let dict = json as? [String: Any]{
+                    item = Film(json: dict)
+                    item!.addFilmProperties(json: dict)
+                }
+                callback(item)
+                
+            case .failure(let error):
+                print(error)
+                callback(nil)
+            }
+        }
+    }
+
 }
