@@ -13,8 +13,9 @@ private let FULL_IMAGE_SECTION = 0
 
 private let FILM_INFO_SECTION = 1
 private let EP_DATE = 0
-private let DIRECTOR_PRODUCER = 1
-private let OPENING_CRAWL = 2
+private let DIRECTOR = 1
+private let PRODUCER = 2
+private let OPENING_CRAWL = 3
 
 private let CHARACTERS_SECTION = 2
 private let PLANETS_SECTION = 3
@@ -45,11 +46,17 @@ class FilmTableViewController: UITableViewController, VCWithName {
         nib = UINib(nibName: "GenderBirthyearCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "GenderBirthyearCell")
         
+        nib = UINib(nibName: "TextBlockCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "TextBlockCell")
+        
         nib = UINib(nibName: "BodyColorCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "BodyColorCell")
         
         nib = UINib(nibName: "ImageCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "ImageCell")
+        
+        nib = UINib(nibName: "DoubleTextBoxCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "DoubleTextBoxCell")
         
         tableView.estimatedRowHeight = 120
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -87,7 +94,7 @@ class FilmTableViewController: UITableViewController, VCWithName {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section{
         case FILM_INFO_SECTION:
-            return 3
+            return 4
         case STARSHIPS_SECTION:
             if let count = film?.starships.count{
                 if(count > 0){
@@ -153,33 +160,42 @@ class FilmTableViewController: UITableViewController, VCWithName {
             
         case FILM_INFO_SECTION:
             if indexPath.row == EP_DATE {
-                let hmCell = tableView.dequeueReusableCell(withIdentifier: "HeightMassCell", for: indexPath) as! HeightMassTableViewCell
+                let newCell = tableView.dequeueReusableCell(withIdentifier: "DoubleTextBoxCell", for: indexPath) as! DoubleTextBoxTableViewCell
                 
-                return hmCell
+                if let film = film,
+                    let episodeId = film.episodeId,
+                    let releaseDate = film.releaseDate{
+                    newCell.leftLabel.text = "Episode: \(episodeId)"
+                    
+                    let formatter = DateFormatter()
+                    formatter.dateStyle = .medium
+                    newCell.rightLabel.text = formatter.string(from: releaseDate)
+                }
+                return newCell
             }
-            else if indexPath.row == DIRECTOR_PRODUCER {
-                let gbCell = tableView.dequeueReusableCell(withIdentifier: "GenderBirthyearCell", for: indexPath) as! GenderBirthyearTableViewCell
+            else if indexPath.row == DIRECTOR {
+                let newCell = tableView.dequeueReusableCell(withIdentifier: "DetailCellFilm", for: indexPath)
+                newCell.textLabel?.text = "Director"
+                newCell.detailTextLabel?.text = film?.director
                 
-                gbCell.birthyearLabel.text = nil
-                gbCell.genderLabel.text = nil
+                return newCell
+            }
+            else if indexPath.row == PRODUCER {
+                let newCell = tableView.dequeueReusableCell(withIdentifier: "DetailCellFilm", for: indexPath)
+                if let film = film{
+                    newCell.textLabel?.text = film.producers.count > 1 ? "Producers: " : "Producer: "
+                }
+                newCell.detailTextLabel?.text = film?.producers.joined(separator: ",")
                 
-                
-                gbCell.genderImageView.image = UIImage(named: "UnknownGenderIcon")
-            
-                
-                return gbCell
+                return newCell
             }
             else if indexPath.row == OPENING_CRAWL{
-                let bcCell = tableView.dequeueReusableCell(withIdentifier: "BodyColorCell", for: indexPath) as! BodyColorTableViewCell
-                bcCell.eyecolorLabel.text = nil
-                bcCell.skincolorLabel.text = nil
-                bcCell.haircolorLabel.text = nil
-                
-                return bcCell
+                let newCell = tableView.dequeueReusableCell(withIdentifier: "TextBlockCell", for: indexPath) as! TextBlockTableViewCell
+                newCell.blockTextLabel.text = film?.openingCrawl
+                return newCell
             }
             else{
-                cell = tableView.dequeueReusableCell(withIdentifier: "BasicCellFilm", for: indexPath)
-                cell.textLabel?.text = "Bad cell"
+                cell = getDefaultCell(indexPath)
             }
         case SPECIES_SECTION:
             if let speciesArray = film?.species{
@@ -191,8 +207,7 @@ class FilmTableViewController: UITableViewController, VCWithName {
                 }
             }
             else{
-                cell = tableView.dequeueReusableCell(withIdentifier: "BasicCellFilm", for: indexPath)
-                cell.textLabel?.text = "Bad cell"
+                cell = getDefaultCell(indexPath)
             }
         case VEHICLES_SECTION:
             if let vehiclesArray = film?.vehicles{
@@ -204,8 +219,7 @@ class FilmTableViewController: UITableViewController, VCWithName {
                 }
             }
             else{
-                cell = tableView.dequeueReusableCell(withIdentifier: "BasicCellFilm", for: indexPath)
-                cell.textLabel?.text = "Bad cell"
+                cell = getDefaultCell(indexPath)
             }
         case PLANETS_SECTION:
             if let vehiclesArray = film?.planets{
@@ -217,8 +231,7 @@ class FilmTableViewController: UITableViewController, VCWithName {
                 }
             }
             else{
-                cell = tableView.dequeueReusableCell(withIdentifier: "BasicCellFilm", for: indexPath)
-                cell.textLabel?.text = "Bad cell"
+                cell = getDefaultCell(indexPath)
             }
 
         case CHARACTERS_SECTION:
@@ -244,13 +257,11 @@ class FilmTableViewController: UITableViewController, VCWithName {
                 }
             }
             else{
-                cell = tableView.dequeueReusableCell(withIdentifier: "BasicCellFilm", for: indexPath)
-                cell.textLabel?.text = "Bad cell"
+                cell = getDefaultCell(indexPath)
             }
             
         default:
-            cell = tableView.dequeueReusableCell(withIdentifier: "BasicCellFilm", for: indexPath)
-            cell.textLabel?.text = "Bad cell"
+            cell = getDefaultCell(indexPath)
         }
         
         return cell
@@ -326,5 +337,11 @@ class FilmTableViewController: UITableViewController, VCWithName {
                 self.navigationController?.pushViewController(nextVC as! UIViewController, animated: true)
             }
         }
+    }
+    
+    func getDefaultCell(_ indexPath: IndexPath) -> UITableViewCell{
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCellFilm", for: indexPath)
+        cell.textLabel?.text = "Bad cell"
+        return cell
     }
 }

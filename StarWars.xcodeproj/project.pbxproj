@@ -40,6 +40,10 @@
 		187AB4AB1E40C54300A998F3 /* TopLevelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AB4AA1E40C54300A998F3 /* TopLevelItem.swift */; };
 		187AB4AF1E4102CA00A998F3 /* DataUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AB4AE1E4102CA00A998F3 /* DataUtilities.swift */; };
 		187AB4B11E41232800A998F3 /* TopLevelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AB4B01E41232800A998F3 /* TopLevelCollectionViewCell.swift */; };
+		189AC8531E54035E00B6AB8E /* DoubleTextBoxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189AC8521E54035E00B6AB8E /* DoubleTextBoxCell.xib */; };
+		189AC8551E54046300B6AB8E /* DoubleTextBoxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189AC8541E54046300B6AB8E /* DoubleTextBoxTableViewCell.swift */; };
+		189AC8571E540DCC00B6AB8E /* TextBlockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189AC8561E540DCC00B6AB8E /* TextBlockTableViewCell.swift */; };
+		189AC8591E540DE000B6AB8E /* TextBlockCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189AC8581E540DE000B6AB8E /* TextBlockCell.xib */; };
 		189BC2741E498A02005F2EB4 /* Array+Rotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189BC2731E498A02005F2EB4 /* Array+Rotate.swift */; };
 		189BC2761E4A13EB005F2EB4 /* HeightMassCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189BC2751E4A13EB005F2EB4 /* HeightMassCell.xib */; };
 		18E795FB1E4F73B800647ED2 /* BodyColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E795FA1E4F73B800647ED2 /* BodyColorCell.xib */; };
@@ -85,6 +89,10 @@
 		187AB4AA1E40C54300A998F3 /* TopLevelItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopLevelItem.swift; sourceTree = "<group>"; };
 		187AB4AE1E4102CA00A998F3 /* DataUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataUtilities.swift; sourceTree = "<group>"; };
 		187AB4B01E41232800A998F3 /* TopLevelCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopLevelCollectionViewCell.swift; sourceTree = "<group>"; };
+		189AC8521E54035E00B6AB8E /* DoubleTextBoxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoubleTextBoxCell.xib; sourceTree = "<group>"; };
+		189AC8541E54046300B6AB8E /* DoubleTextBoxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleTextBoxTableViewCell.swift; sourceTree = "<group>"; };
+		189AC8561E540DCC00B6AB8E /* TextBlockTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextBlockTableViewCell.swift; sourceTree = "<group>"; };
+		189AC8581E540DE000B6AB8E /* TextBlockCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextBlockCell.xib; sourceTree = "<group>"; };
 		189BC2731E498A02005F2EB4 /* Array+Rotate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Rotate.swift"; sourceTree = "<group>"; };
 		189BC2751E4A13EB005F2EB4 /* HeightMassCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeightMassCell.xib; sourceTree = "<group>"; };
 		18E795FA1E4F73B800647ED2 /* BodyColorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BodyColorCell.xib; sourceTree = "<group>"; };
@@ -129,6 +137,7 @@
 		18103ECC1E3D6CF7007A0D57 /* StarWars */ = {
 			isa = PBXGroup;
 			children = (
+				189AC8511E53FEA400B6AB8E /* FilmCells */,
 				189BC2701E461EA9005F2EB4 /* ScrollablePhotosCell */,
 				189BC2771E4A1427005F2EB4 /* PersonInfoCells */,
 				18103EF61E3DA852007A0D57 /* View Controllers */,
@@ -177,6 +186,17 @@
 				184D7C831E4FE8CC0053143C /* VCWithNameProtocol.swift */,
 			);
 			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		189AC8511E53FEA400B6AB8E /* FilmCells */ = {
+			isa = PBXGroup;
+			children = (
+				189AC8521E54035E00B6AB8E /* DoubleTextBoxCell.xib */,
+				189AC8541E54046300B6AB8E /* DoubleTextBoxTableViewCell.swift */,
+				189AC8561E540DCC00B6AB8E /* TextBlockTableViewCell.swift */,
+				189AC8581E540DE000B6AB8E /* TextBlockCell.xib */,
+			);
+			name = FilmCells;
 			sourceTree = "<group>";
 		};
 		189BC2701E461EA9005F2EB4 /* ScrollablePhotosCell */ = {
@@ -290,9 +310,11 @@
 				18103ED81E3D6CF8007A0D57 /* LaunchScreen.storyboard in Resources */,
 				18E795FB1E4F73B800647ED2 /* BodyColorCell.xib in Resources */,
 				181D541F1E45A2B30032DBCA /* PhotoCollectionViewCell.xib in Resources */,
+				189AC8531E54035E00B6AB8E /* DoubleTextBoxCell.xib in Resources */,
 				189BC2761E4A13EB005F2EB4 /* HeightMassCell.xib in Resources */,
 				18E795FD1E4F73D600647ED2 /* GenderBirthyearCell.xib in Resources */,
 				186246391E43C21B001F77FC /* ScrollablePhotosCell.xib in Resources */,
+				189AC8591E540DE000B6AB8E /* TextBlockCell.xib in Resources */,
 				184D7C761E4FDC5B0053143C /* ImageCell.xib in Resources */,
 				18103ED51E3D6CF8007A0D57 /* Assets.xcassets in Resources */,
 				18103ED31E3D6CF8007A0D57 /* Main.storyboard in Resources */,
@@ -377,6 +399,7 @@
 				184D7C821E4FE6F20053143C /* SpeciesTableViewController.swift in Sources */,
 				187AB4AF1E4102CA00A998F3 /* DataUtilities.swift in Sources */,
 				189BC2741E498A02005F2EB4 /* Array+Rotate.swift in Sources */,
+				189AC8571E540DCC00B6AB8E /* TextBlockTableViewCell.swift in Sources */,
 				187AB4A71E40C50900A998F3 /* Vehicle.swift in Sources */,
 				184D7C7C1E4FE6CA0053143C /* StarshipTableViewController.swift in Sources */,
 				184D7C781E4FDC940053143C /* ImageTableViewCell.swift in Sources */,
@@ -384,6 +407,7 @@
 				187AB4A51E40C4F200A998F3 /* Species.swift in Sources */,
 				187AB4A31E40C4DB00A998F3 /* Person.swift in Sources */,
 				18103EEE1E3DA2AB007A0D57 /* ItemCollectionViewCell.swift in Sources */,
+				189AC8551E54046300B6AB8E /* DoubleTextBoxTableViewCell.swift in Sources */,
 				187AB4AB1E40C54300A998F3 /* TopLevelItem.swift in Sources */,
 				187AB4B11E41232800A998F3 /* TopLevelCollectionViewCell.swift in Sources */,
 				187AB4A91E40C52800A998F3 /* Film.swift in Sources */,

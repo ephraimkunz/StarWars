@@ -50,10 +50,10 @@ struct Film: Displayable{
     }
     
     mutating func addFilmProperties(json: [String: Any]){
-        self.episodeId = json["episode_id"] as? String
+        self.episodeId = String(describing: (json["episode_id"] as! Int))
         self.openingCrawl = json["opening_crawl"] as? String
         self.director = json["director"] as? String
-        if let producersCSV = json["eye_color"] as? String{
+        if let producersCSV = json["producer"] as? String{
             self.producers = producersCSV.components(separatedBy: ",")
         }
         
