@@ -318,33 +318,41 @@ class PersonDetailTableViewController: UITableViewController, VCWithName {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var nextVC: VCWithName
         var id: String?
+        var type: EntityType?
         
         switch indexPath.section{
         case VITALS_SECTION:
             nextVC = storyboard?.instantiateViewController(withIdentifier: "PlanetDetailView") as! VCWithName
             id = person?.homeworld
+            type = .planets
         case VEHICLES_SECTION:
             nextVC = storyboard?.instantiateViewController(withIdentifier: "VehicleDetailView") as! VCWithName
             id = person?.vehicles[indexPath.row]
+            type = .vehicles
         case STARSHIPS_SECTION:
             nextVC = storyboard?.instantiateViewController(withIdentifier: "StarshipDetailView") as! VCWithName
             id = person?.starships[indexPath.row]
+            type = .starships
         case SPECIES_SECTION:
             nextVC = storyboard?.instantiateViewController(withIdentifier: "SpeciesDetailView") as! VCWithName
             id = person?.species[indexPath.row]
+            type = .species
         case FILMS_SECTION:
             nextVC = storyboard?.instantiateViewController(withIdentifier: "FilmDetailView") as! VCWithName
             id = person?.films[indexPath.row]
+            type = .films
         default:
             return //Don't try to go anywhere
         }
         
-        if let person = person,
-            let id = id{
-            nextVC.name = person.getName()
+        if let id = id, let type = type{
             nextVC.id = id
-            navigationController?.pushViewController(nextVC as! UIViewController, animated: true)
-
+            DataRepo.getNameForId(id: id, type: type){ name in
+                if let name = name{
+                    nextVC.name = name
+                }
+                self.navigationController?.pushViewController(nextVC as! UIViewController, animated: true)
+            }
         }
     }
 }
