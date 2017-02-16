@@ -153,8 +153,8 @@ class PlanetTableViewController: UITableViewController, VCWithName {
                 
                 if let rotation = planet?.rotationPeriod,
                     let orbital = planet?.orbitalPeriod{
-                    newCell.leftLabel.text = "Rotation: \(rotation) (hours)"
-                    newCell.rightLabel.text = "Orbit: \(orbital) (days)"
+                    newCell.leftLabel.text = "Rotation: \(rotation)" + (rotation == "unknown" ? "" : " (km)")
+                    newCell.rightLabel.text = "Orbit: \(orbital)" + (orbital == "unknown" ? "" : " (km)")
                 }
                 return newCell
             }
@@ -163,7 +163,7 @@ class PlanetTableViewController: UITableViewController, VCWithName {
                 
                 if let diameter = planet?.diameter,
                     let climate = planet?.climate{
-                    newCell.leftLabel.text = "Diameter: \(diameter) (km)"
+                    newCell.leftLabel.text = "Diameter: \(diameter)" + (diameter == "unknown" ? "" : " (km)")
                     newCell.rightLabel.text = "Climate: \(climate)"
                 }
                 return newCell
