@@ -321,4 +321,26 @@ class DataRepo {
         }
     }
 
+    static func getPlanet(id: String, callback: @escaping (Planet?) -> Void){
+        let requestUrl = getRequestUrl(type: .planets, id: id)
+        
+        Alamofire.request(requestUrl).responseJSON{ response in
+            switch response.result{
+            case .success(let json):
+                //print(json)
+                
+                var item: Planet?
+                
+                if let dict = json as? [String: Any]{
+                    item = Planet(json: dict)
+                    item!.addPlanetProperties(json: dict)
+                }
+                callback(item)
+                
+            case .failure(let error):
+                print(error)
+                callback(nil)
+            }
+        }
+    }
 }
