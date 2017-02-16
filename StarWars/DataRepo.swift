@@ -343,4 +343,27 @@ class DataRepo {
             }
         }
     }
+    
+    static func getSpecies(id: String, callback: @escaping (Species?) -> Void){
+        let requestUrl = getRequestUrl(type: .species, id: id)
+        
+        Alamofire.request(requestUrl).responseJSON{ response in
+            switch response.result{
+            case .success(let json):
+                //print(json)
+                
+                var item: Species?
+                
+                if let dict = json as? [String: Any]{
+                    item = Species(json: dict)
+                    item!.addSpeciesProperties(json: dict)
+                }
+                callback(item)
+                
+            case .failure(let error):
+                print(error)
+                callback(nil)
+            }
+        }
+    }
 }
