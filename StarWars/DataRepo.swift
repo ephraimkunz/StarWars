@@ -371,4 +371,50 @@ class DataRepo {
             }
         }
     }
+    
+    static func getVehicle(id: String, callback: @escaping (Vehicle?) -> Void){
+        let requestUrl = getRequestUrl(type: .vehicles, id: id)
+        
+        Alamofire.request(requestUrl).responseJSON{ response in
+            switch response.result{
+            case .success(let json):
+                //print(json)
+                
+                var item: Vehicle?
+                
+                if let dict = json as? [String: Any]{
+                    item = Vehicle(json: dict)
+                    item!.addVehicleProperties(json: dict)
+                }
+                callback(item)
+                
+            case .failure(let error):
+                print(error)
+                callback(nil)
+            }
+        }
+    }
+    
+    static func getStarship(id: String, callback: @escaping (Starship?) -> Void){
+        let requestUrl = getRequestUrl(type: .starships, id: id)
+        
+        Alamofire.request(requestUrl).responseJSON{ response in
+            switch response.result{
+            case .success(let json):
+                //print(json)
+                
+                var item: Starship?
+                
+                if let dict = json as? [String: Any]{
+                    item = Starship(json: dict)
+                    item!.addStarshipProperties(json: dict)
+                }
+                callback(item)
+                
+            case .failure(let error):
+                print(error)
+                callback(nil)
+            }
+        }
+    }
 }
