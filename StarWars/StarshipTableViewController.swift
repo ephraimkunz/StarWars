@@ -244,6 +244,8 @@ class StarshipTableViewController: UITableViewController, VCWithName {
             return nil
         }
         switch section{
+        case IMAGES:
+            return "Images"
         case INFO_SECTION:
             return "Starship Information"
         case PILOT_SECTION:

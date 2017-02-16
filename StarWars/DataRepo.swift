@@ -11,6 +11,7 @@ import Alamofire
 
 private let SwapiBaseUrl = "https://swapi.co/api/"
 private let WookieBaseUrl = "https://starwars.wikia.com/api.php?"
+private let WookieInfoUrl = "https://starwars.wikia.com/wiki/"
 private let SWAPI_ITEMS_PER_PAGE = 10 //SWAPI gives us maximum 10 items at a time
 private let thumbWidth = 300 //Width in pixels of a thumbnail image
 
@@ -39,7 +40,8 @@ private let badImageNames: Set<String> = [
     "http://vignette2.wikia.nocookie.net/starwars/images/d/dc/SWRM.png/revision/latest?cb=20151003201234",
     "http://vignette1.wikia.nocookie.net/starwars/images/8/83/SWInsider.png/revision/latest?cb=20150108044956",
     "http://vignette3.wikia.nocookie.net/starwars/images/b/bf/LEGO.png/revision/latest?cb=20140302164226",
-    "http://vignette1.wikia.nocookie.net/starwars/images/4/46/New_HNN.png/revision/latest?cb=20140729143503"
+    "http://vignette1.wikia.nocookie.net/starwars/images/4/46/New_HNN.png/revision/latest?cb=20140729143503",
+    "http://vignette4.wikia.nocookie.net/starwars/images/8/80/Han1_edited.jpg/revision/latest?cb=20090605140836"
     
 ]
 
@@ -416,5 +418,11 @@ class DataRepo {
                 callback(nil)
             }
         }
+    }
+    
+    static func getInfoUrl(name: String) -> URL?{
+        let urlString = WookieInfoUrl + name
+        let urlEncoded = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        return URL(string: urlEncoded)
     }
 }

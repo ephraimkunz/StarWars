@@ -19,6 +19,7 @@ private let HEIGHTMASS = 0
 private let GENDER_BIRTH = 1
 private let BODY_COLOR_ROW = 2
 private let HOMEWORLD_ROW = 3
+private let MORE_INFO = 4
 
 private let SPECIES_SECTION = 2
 private let VEHICLES_SECTION = 5
@@ -106,7 +107,7 @@ class PersonDetailTableViewController: UITableViewController, VCWithName {
         case PHOTOS_SECTION:
             return 1
         case VITALS_SECTION:
-            return 4
+            return 5
         case STARSHIPS_SECTION:
             if let count = person?.starships.count{
                 if(count > 0){
@@ -200,6 +201,11 @@ class PersonDetailTableViewController: UITableViewController, VCWithName {
                 bcCell.haircolorLabel.text = person?.hairColor
                 
                 return bcCell
+            }
+            else if indexPath.row == MORE_INFO{
+                cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath)
+                cell.accessoryType = .disclosureIndicator
+                cell.textLabel?.text = "More Information"
             }
             else if indexPath.row == HOMEWORLD_ROW{
                 cell = tableView.dequeueReusableCell(withIdentifier: "RightDetailCell", for: indexPath)
@@ -308,7 +314,7 @@ class PersonDetailTableViewController: UITableViewController, VCWithName {
     }
     
     override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        return (indexPath.section == VITALS_SECTION && indexPath.row == HOMEWORLD_ROW) ||
+        return (indexPath.section == VITALS_SECTION && (indexPath.row == HOMEWORLD_ROW || indexPath.row == MORE_INFO)) ||
             indexPath.section == SPECIES_SECTION ||
             indexPath.section == FILMS_SECTION ||
             indexPath.section == VEHICLES_SECTION ||
@@ -345,13 +351,22 @@ class PersonDetailTableViewController: UITableViewController, VCWithName {
             return //Don't try to go anywhere
         }
         
-        if let id = id, let type = type{
-            nextVC.id = id
-            DataRepo.getNameForId(id: id, type: type){ name in
-                if let name = name{
-                    nextVC.name = name
+        if indexPath.section == VITALS_SECTION && indexPath.row == MORE_INFO{
+            if let name = person?.getName(),
+            let url = DataRepo.getInfoUrl(name: name){
+                UIApplication.shared.openURL(url)
+            }
+        }
+        
+        else{
+            if let id = id, let type = type{
+                nextVC.id = id
+                DataRepo.getNameForId(id: id, type: type){ name in
+                    if let name = name{
+                        nextVC.name = name
+                    }
+                    self.navigationController?.pushViewController(nextVC as! UIViewController, animated: true)
                 }
-                self.navigationController?.pushViewController(nextVC as! UIViewController, animated: true)
             }
         }
     }
