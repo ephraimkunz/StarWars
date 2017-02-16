@@ -35,7 +35,12 @@ private let badImageNames: Set<String> = [
     "http://vignette2.wikia.nocookie.net/starwars/images/5/53/HasbroInverted.png/revision/latest?cb=20151007232731",
     "http://vignette4.wikia.nocookie.net/starwars/images/4/4c/30px-Era-imp.png/revision/latest?cb=20070930172639",
     "http://vignette2.wikia.nocookie.net/starwars/images/d/d3/30px-Era-reb.png/revision/latest?cb=20070930172814",
-    "http://vignette2.wikia.nocookie.net/starwars/images/2/26/30px-FormerGAicon.png/revision/latest?cb=20081006233608"
+    "http://vignette2.wikia.nocookie.net/starwars/images/2/26/30px-FormerGAicon.png/revision/latest?cb=20081006233608",
+    "http://vignette2.wikia.nocookie.net/starwars/images/d/dc/SWRM.png/revision/latest?cb=20151003201234",
+    "http://vignette1.wikia.nocookie.net/starwars/images/8/83/SWInsider.png/revision/latest?cb=20150108044956",
+    "http://vignette3.wikia.nocookie.net/starwars/images/b/bf/LEGO.png/revision/latest?cb=20140302164226",
+    "http://vignette1.wikia.nocookie.net/starwars/images/4/46/New_HNN.png/revision/latest?cb=20140729143503"
+    
 ]
 
 class DataRepo {

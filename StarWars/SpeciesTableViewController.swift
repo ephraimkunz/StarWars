@@ -199,7 +199,7 @@ class SpeciesTableViewController: UITableViewController, VCWithName{
                 if let language = species?.language,
                     let lifespan = species?.averageLifespan{
                     newCell.leftLabel.text = "Lang: \(language.capitalized)"
-                    newCell.rightLabel.text = "Lifespan: \(lifespan) (yrs)"
+                    newCell.rightLabel.text = "Lifespan: \(lifespan)" + (lifespan == "unknown" ? "" : " (yrs)")
                 }
                 
                 return newCell
