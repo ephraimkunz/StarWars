@@ -12,6 +12,7 @@ import IDMPhotoBrowser
 private var images: [URL] = []
 
 private let FULL_IMAGE_SECTION = 0
+private let FULL_IMAGE_ROW = 0
 private let PHOTOS_SECTION = 6
 private let VITALS_SECTION = 1
 
@@ -32,6 +33,8 @@ class PersonDetailTableViewController: UITableViewController, VCWithName {
     var photosCollectionView: UICollectionView?
     var person: Person?
     var fullImageUrl: URL?
+    var scaledImage: UIImage?
+    var fullImage: UIImage?
     
     var showSection: [Int: Bool] = [PHOTOS_SECTION: false,
                                     VITALS_SECTION: false,
@@ -85,10 +88,29 @@ class PersonDetailTableViewController: UITableViewController, VCWithName {
             self.tableView.reloadData()
         }
         
-        DataRepo.getImageUrl(name: name, scaledDown: true) { imageUrl in
+        DataRepo.getImageUrl(name: name, scaledDown: false) { imageUrl in
             self.fullImageUrl = imageUrl
-            self.tableView.reloadData()
+            
+            if let fullImageUrl = imageUrl{
+                SDWebImageManager.shared().downloadImage(
+                    with: fullImageUrl,
+                    options: .avoidAutoSetImage,
+                    progress: {recievedSize, expectedSize in }){
+                        image, _, _, _, _ in
+                        if let image = image{
+                            self.fullImage = image //Set the unscaled
+                            self.scaledImage = DataUtilities.imageScaledToWidth(image: image, width: self.tableView.frame.size.width)   //Set the scaled
+                            self.tableView.reloadData()
+                        }
+                }
+            }
         }
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        let imageIndexPath = IndexPath(row: FULL_IMAGE_ROW, section: FULL_IMAGE_SECTION)
+        scaledImage = DataUtilities.imageScaledToWidth(image: fullImage, width: size.width)
+        tableView.reloadRows(at: [imageIndexPath], with: UITableViewRowAnimation.none)
     }
 
     override func didReceiveMemoryWarning() {
@@ -156,10 +178,7 @@ class PersonDetailTableViewController: UITableViewController, VCWithName {
         switch(indexPath.section){
         case FULL_IMAGE_SECTION:
             let fiCell = tableView.dequeueReusableCell(withIdentifier: "ImageCell", for: indexPath) as! ImageTableViewCell
-            if let fullImageUrl = fullImageUrl{
-                fiCell.fullImage.sd_setImage(with: fullImageUrl, placeholderImage: UIImage(named: "GenericImagePLaceholder"))
-            }
-            
+            fiCell.fullImage.image = scaledImage
             return fiCell
         case PHOTOS_SECTION:
             cell = tableView.dequeueReusableCell(withIdentifier: "ScrollablePhotosCell", for: indexPath)

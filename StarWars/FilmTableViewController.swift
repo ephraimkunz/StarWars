@@ -10,6 +10,7 @@ import UIKit
 import IDMPhotoBrowser
 
 private let FULL_IMAGE_SECTION = 0
+private let FULL_IMAGE_ROW = 0
 
 private let FILM_INFO_SECTION = 1
 private let EP_DATE = 0
@@ -28,6 +29,8 @@ class FilmTableViewController: UITableViewController, VCWithName {
     var id: String = ""
     var film: Film?
     var fullImageUrl: URL?
+    var fullImage: UIImage?
+    var scaledImage: UIImage?
     
     var showSection: [Int: Bool] = [FILM_INFO_SECTION: false,
                                     SPECIES_SECTION: false,
@@ -74,9 +77,22 @@ class FilmTableViewController: UITableViewController, VCWithName {
             self.tableView.reloadData()
         }
         
-        DataRepo.getImageUrl(name: name, scaledDown: true) { imageUrl in
+        DataRepo.getImageUrl(name: name, scaledDown: false) { imageUrl in
             self.fullImageUrl = imageUrl
-            self.tableView.reloadData()
+            
+            if let fullImageUrl = imageUrl{
+                SDWebImageManager.shared().downloadImage(
+                    with: fullImageUrl,
+                    options: .avoidAutoSetImage,
+                    progress: {recievedSize, expectedSize in }){
+                        image, _, _, _, _ in
+                        if let image = image{
+                            self.fullImage = image //Set the unscaled
+                            self.scaledImage = DataUtilities.imageScaledToWidth(image: image, width: self.tableView.frame.size.width)   //Set the scaled
+                            self.tableView.reloadData()
+                        }
+                }
+            }
         }
     }
 
@@ -84,6 +100,13 @@ class FilmTableViewController: UITableViewController, VCWithName {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        let imageIndexPath = IndexPath(row: FULL_IMAGE_ROW, section: FULL_IMAGE_SECTION)
+        scaledImage = DataUtilities.imageScaledToWidth(image: fullImage, width: size.width)
+        tableView.reloadRows(at: [imageIndexPath], with: UITableViewRowAnimation.none)
+    }
+
 
     // MARK: - Table view data source
 
@@ -153,9 +176,7 @@ class FilmTableViewController: UITableViewController, VCWithName {
         switch(indexPath.section){
         case FULL_IMAGE_SECTION:
             let fiCell = tableView.dequeueReusableCell(withIdentifier: "ImageCell", for: indexPath) as! ImageTableViewCell
-            if let fullImageUrl = fullImageUrl{
-                fiCell.fullImage.sd_setImage(with: fullImageUrl, placeholderImage: UIImage(named: "GenericImagePLaceholder"))
-            }
+            fiCell.fullImage.image = scaledImage
             return fiCell
             
         case FILM_INFO_SECTION:

@@ -13,6 +13,7 @@ private var images: [URL] = []
 
 private let IMAGES = 4
 private let FULL_IMAGE_SECTION = 0
+private let FULL_IMAGE_ROW = 0
 private let INFO_SECTION = 1
 
 private let MODEL = 0
@@ -32,6 +33,8 @@ class StarshipTableViewController: UITableViewController, VCWithName {
     var photosCollectionView: UICollectionView?
     var starship: Starship?
     var fullImageUrl: URL?
+    var fullImage: UIImage?
+    var scaledImage: UIImage?
     
     var showSection: [Int: Bool] = [INFO_SECTION: false,
                                     PILOT_SECTION: false,
@@ -85,9 +88,22 @@ class StarshipTableViewController: UITableViewController, VCWithName {
             self.tableView.reloadData()
         }
         
-        DataRepo.getImageUrl(name: name, scaledDown: true) { imageUrl in
+        DataRepo.getImageUrl(name: name, scaledDown: false) { imageUrl in
             self.fullImageUrl = imageUrl
-            self.tableView.reloadData()
+            
+            if let fullImageUrl = imageUrl{
+                SDWebImageManager.shared().downloadImage(
+                    with: fullImageUrl,
+                    options: .avoidAutoSetImage,
+                    progress: {recievedSize, expectedSize in }){
+                        image, _, _, _, _ in
+                        if let image = image{
+                            self.fullImage = image //Set the unscaled
+                            self.scaledImage = DataUtilities.imageScaledToWidth(image: image, width: self.tableView.frame.size.width)   //Set the scaled
+                            self.tableView.reloadData()
+                        }
+                }
+            }
         }
     }
     
@@ -95,6 +111,13 @@ class StarshipTableViewController: UITableViewController, VCWithName {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        let imageIndexPath = IndexPath(row: FULL_IMAGE_ROW, section: FULL_IMAGE_SECTION)
+        scaledImage = DataUtilities.imageScaledToWidth(image: fullImage, width: size.width)
+        tableView.reloadRows(at: [imageIndexPath], with: UITableViewRowAnimation.none)
+    }
+
     
     // MARK: - Table view data source
     
@@ -141,9 +164,7 @@ class StarshipTableViewController: UITableViewController, VCWithName {
             cell = tableView.dequeueReusableCell(withIdentifier: "ScrollablePhotosCell", for: indexPath)
         case FULL_IMAGE_SECTION:
             let fiCell = tableView.dequeueReusableCell(withIdentifier: "ImageCell", for: indexPath) as! ImageTableViewCell
-            if let fullImageUrl = fullImageUrl{
-                fiCell.fullImage.sd_setImage(with: fullImageUrl, placeholderImage: UIImage(named: "GenericImagePlaceholder"))
-            }
+            fiCell.fullImage.image = scaledImage
             
             return fiCell
             
@@ -163,12 +184,12 @@ class StarshipTableViewController: UITableViewController, VCWithName {
                 }
                 return newCell
             }
-            else if indexPath.row == CREW_PASSENGERS {
+            else if indexPath.row == COST_LENGTH{
                 let newCell = tableView.dequeueReusableCell(withIdentifier: "DoubleTextBoxCell", for: indexPath) as! DoubleTextBoxTableViewCell
-                if let crew = starship?.crew,
-                    let passengers = starship?.passengers{
-                    newCell.leftLabel.text = "Crew: \(crew)"
-                    newCell.rightLabel.text = "Passengers: \(passengers)"
+                if let cost = starship?.cost,
+                    let length = starship?.length{
+                    newCell.leftLabel.text = "Cost: \(cost)" + (cost == "unknown" ? "" : " (credits)")
+                    newCell.rightLabel.text = "Length: \(length) (m)"
                 }
                 return newCell
             }
