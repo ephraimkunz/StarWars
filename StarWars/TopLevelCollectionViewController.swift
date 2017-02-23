@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ChameleonFramework
 
 private let reuseIdentifier = "TopLevelCell"
 
@@ -57,7 +58,7 @@ class TopLevelCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDelegate
     override func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath){
         let cell = collectionView.cellForItem(at: indexPath)
-        cell?.backgroundColor = UIColor.blue
+        cell?.backgroundColor = UIColor.lightGray
     }
     
     override func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
