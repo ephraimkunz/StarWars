@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Star Wars Scoop-->
+        <!--Rebel Repository-->
         <scene sceneID="Kx4-fd-bU1">
             <objects>
                 <collectionViewController id="hJS-9j-rxG" customClass="TopLevelCollectionViewController" customModule="StarWars" customModuleProvider="target" sceneMemberID="viewController">
@@ -64,7 +64,7 @@
                             <outlet property="delegate" destination="hJS-9j-rxG" id="kNb-Pm-Oh6"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Star Wars Scoop" id="RGp-Ui-HSN">
+                    <navigationItem key="navigationItem" title="Rebel Repository" id="RGp-Ui-HSN">
                         <barButtonItem key="backBarButtonItem" title="All" id="X6f-EN-Cvr"/>
                     </navigationItem>
                 </collectionViewController>
@@ -161,7 +161,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BasicCell" textLabel="TCB-NL-H5i" style="IBUITableViewCellStyleDefault" id="IDh-4g-W2a">
-                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IDh-4g-W2a" id="8NP-a6-0zg">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -178,7 +178,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RightDetailCell" textLabel="rxt-se-azY" detailTextLabel="8b6-BQ-Vej" style="IBUITableViewCellStyleValue1" id="JEv-3c-7D9">
-                                <rect key="frame" x="0.0" y="100" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JEv-3c-7D9" id="9GM-dW-O9x">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -222,7 +222,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="BasicCellFilm" textLabel="LCg-68-2gZ" style="IBUITableViewCellStyleDefault" id="hPg-tj-pm2">
-                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hPg-tj-pm2" id="DyI-PU-z7t">
                                     <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
@@ -239,7 +239,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailCellFilm" textLabel="A2V-TB-nfb" detailTextLabel="Jdu-Me-6Y8" style="IBUITableViewCellStyleValue1" id="FgO-wO-37Z">
-                                <rect key="frame" x="0.0" y="100" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FgO-wO-37Z" id="Je5-n9-gQ5">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -283,7 +283,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="BasicCellPlanet" textLabel="mMR-ht-Uw5" style="IBUITableViewCellStyleDefault" id="3Yn-Yx-zZg">
-                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Yn-Yx-zZg" id="K7Y-A2-NwU">
                                     <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
@@ -300,7 +300,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailCellPlanet" textLabel="7x1-lC-9JH" detailTextLabel="Rsz-Pz-HXP" style="IBUITableViewCellStyleValue1" id="dm6-UF-g33">
-                                <rect key="frame" x="0.0" y="100" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dm6-UF-g33" id="rnp-Gh-OCL">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -344,7 +344,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="BasicCellSpecies" textLabel="CU3-Zp-M2H" style="IBUITableViewCellStyleDefault" id="iMm-Id-KZa">
-                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iMm-Id-KZa" id="YNR-Y9-wbh">
                                     <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
@@ -361,7 +361,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailCellSpecies" textLabel="TCJ-oc-jNJ" detailTextLabel="Hn1-gs-OHG" style="IBUITableViewCellStyleValue1" id="hjb-ns-yOE">
-                                <rect key="frame" x="0.0" y="100" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hjb-ns-yOE" id="ylA-NZ-keI">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -405,7 +405,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="BasicCellStarship" textLabel="9S0-nC-dpi" style="IBUITableViewCellStyleDefault" id="pRK-f6-9I6">
-                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pRK-f6-9I6" id="wfU-CJ-Hd2">
                                     <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
@@ -422,7 +422,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailCellStarship" textLabel="GCJ-tY-AIx" detailTextLabel="JZH-VU-rOS" style="IBUITableViewCellStyleValue1" id="NcS-w9-2kX">
-                                <rect key="frame" x="0.0" y="100" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NcS-w9-2kX" id="oHY-wx-eA7">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -466,7 +466,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="BasicCellVehicle" textLabel="ShS-SV-naV" style="IBUITableViewCellStyleDefault" id="XxP-5h-KPt">
-                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XxP-5h-KPt" id="Z0t-nB-6vY">
                                     <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
@@ -483,7 +483,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailCellVehicle" textLabel="l6y-CB-7YB" detailTextLabel="QoZ-Qd-44s" style="IBUITableViewCellStyleValue1" id="39i-WH-IaN">
-                                <rect key="frame" x="0.0" y="100" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="39i-WH-IaN" id="C4a-LX-rU6">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
