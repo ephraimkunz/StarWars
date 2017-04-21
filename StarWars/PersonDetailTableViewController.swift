@@ -92,11 +92,11 @@ class PersonDetailTableViewController: UITableViewController, VCWithName {
             self.fullImageUrl = imageUrl
             
             if let fullImageUrl = imageUrl{
-                SDWebImageManager.shared().downloadImage(
+                SDWebImageManager.shared().loadImage(
                     with: fullImageUrl,
                     options: .avoidAutoSetImage,
-                    progress: {recievedSize, expectedSize in }){
-                        image, _, _, _, _ in
+                    progress: nil){
+                        image, _, _, _, _,_ in
                         if let image = image{
                             self.fullImage = image //Set the unscaled
                             self.scaledImage = DataUtilities.imageScaledToWidth(image: image, width: self.tableView.frame.size.width)   //Set the scaled
